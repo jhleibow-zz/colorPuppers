@@ -1,12 +1,14 @@
 //
 //  AppDelegate.swift
-//  ColorClick
+//  ColorPuppers
 //
 //  Created by John Leibowitz on 5/29/17.
 //  Copyright © 2017 John Leibowitz. All rights reserved.
 //
 
+import GoogleMobileAds
 import UIKit
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        //creates new game session, which automatically loads saved high score data and settings if they exist
+        if let gameStartPageViewController = window?.rootViewController as? GameStartPageViewController {
+            gameStartPageViewController.gameSession = GameSession()
+        }
+        
+        
+        //Begin loading GoogleMobileAds
+        GADMobileAds.configure(withApplicationID: GamePlayParameters.AdMob.appID)
+        //can i start loading here?
+        
         return true
     }
 

@@ -1,0 +1,671 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		141CA1411F037C7900E7DA52 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CA1401F037C7900E7DA52 /* Utilities.swift */; };
+		141CA1431F07839600E7DA52 /* Bark.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 141CA1421F07839500E7DA52 /* Bark.m4a */; };
+		141CA1451F0783A300E7DA52 /* Sad Whine.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 141CA1441F0783A300E7DA52 /* Sad Whine.m4a */; };
+		141CA1471F078BA900E7DA52 /* funky.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 141CA1461F078BA900E7DA52 /* funky.mp3 */; };
+		141CA14B1F1573EB00E7DA52 /* AboutPuppersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CA14A1F1573EB00E7DA52 /* AboutPuppersViewController.swift */; };
+		1427B5121F31210F0027433E /* PupperSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1427B5111F31210F0027433E /* PupperSplashViewController.swift */; };
+		1427B5141F32658B0027433E /* BEBAS___.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1427B5131F32658B0027433E /* BEBAS___.ttf */; };
+		1427B5161F3265B60027433E /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1427B5151F3265B60027433E /* Lato-Regular.ttf */; };
+		1442E9341F354D6700079105 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1442E9331F354D4000079105 /* Lato-Bold.ttf */; };
+		148A5F6F1EE20F0E001C20A5 /* GameColorsAndObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148A5F6E1EE20F0E001C20A5 /* GameColorsAndObjects.swift */; };
+		148A5F711EE4D938001C20A5 /* GameColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148A5F701EE4D938001C20A5 /* GameColor.swift */; };
+		148A5F731EE558C4001C20A5 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148A5F721EE558C4001C20A5 /* GameOverViewController.swift */; };
+		148A5F751EE75A3D001C20A5 /* GameStartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148A5F741EE75A3D001C20A5 /* GameStartPageViewController.swift */; };
+		14CD7AF11EDCED03001AB42C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD7AF01EDCED03001AB42C /* AppDelegate.swift */; };
+		14CD7AF31EDCED03001AB42C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD7AF21EDCED03001AB42C /* GameViewController.swift */; };
+		14CD7AF61EDCED03001AB42C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14CD7AF41EDCED03001AB42C /* Main.storyboard */; };
+		14CD7AF81EDCED03001AB42C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14CD7AF71EDCED03001AB42C /* Assets.xcassets */; };
+		14CD7AFB1EDCED03001AB42C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14CD7AF91EDCED03001AB42C /* LaunchScreen.storyboard */; };
+		14CD7B061EDCED03001AB42C /* ColorPuppersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD7B051EDCED03001AB42C /* ColorPuppersTests.swift */; };
+		14CD7B111EDE1170001AB42C /* MiniGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD7B101EDE1170001AB42C /* MiniGame.swift */; };
+		14CD7B151EDE3F4D001AB42C /* SquareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD7B141EDE3F4D001AB42C /* SquareButton.swift */; };
+		14CD7B171EDF3ADA001AB42C /* Square.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD7B161EDF3ADA001AB42C /* Square.swift */; };
+		14D16F0A1EE9456A00AC63F1 /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D16F091EE9456A00AC63F1 /* GameSession.swift */; };
+		14D16F0C1EE9D7A900AC63F1 /* HighScoresAndSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D16F0B1EE9D7A900AC63F1 /* HighScoresAndSettings.swift */; };
+		14D16F0E1EEA119F00AC63F1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D16F0D1EEA119F00AC63F1 /* SettingsViewController.swift */; };
+		14D16F101EEF5A8400AC63F1 /* MiniGameStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D16F0F1EEF5A8400AC63F1 /* MiniGameStage.swift */; };
+		14D16F121EF0B6C700AC63F1 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D16F111EF0B6C700AC63F1 /* GameObject.swift */; };
+		14D16F141EF1EA1500AC63F1 /* GamePlayParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D16F131EF1EA1500AC63F1 /* GamePlayParameters.swift */; };
+		651177C3B2CAAC66A3D46507 /* Pods_ColorPuppers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AE98A8406B7D8E4EC05EBE /* Pods_ColorPuppers.framework */; };
+		CDD63F435BE7FA863B772DA1 /* Pods_ColorPuppersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B840A98054DC2F52647D143A /* Pods_ColorPuppersTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		14CD7B021EDCED03001AB42C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 14CD7AE51EDCED03001AB42C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 14CD7AEC1EDCED03001AB42C;
+			remoteInfo = ColorClick;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		141CA1401F037C7900E7DA52 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		141CA1421F07839500E7DA52 /* Bark.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Bark.m4a; path = ColorClick/Bark.m4a; sourceTree = "<group>"; };
+		141CA1441F0783A300E7DA52 /* Sad Whine.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sad Whine.m4a"; path = "ColorClick/Sad Whine.m4a"; sourceTree = "<group>"; };
+		141CA1461F078BA900E7DA52 /* funky.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = funky.mp3; path = ColorClick/funky.mp3; sourceTree = "<group>"; };
+		141CA14A1F1573EB00E7DA52 /* AboutPuppersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutPuppersViewController.swift; sourceTree = "<group>"; };
+		141CA14C1F15798700E7DA52 /* Slackey */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Slackey; sourceTree = "<group>"; };
+		1427B5111F31210F0027433E /* PupperSplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PupperSplashViewController.swift; sourceTree = "<group>"; };
+		1427B5131F32658B0027433E /* BEBAS___.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BEBAS___.ttf"; sourceTree = "<group>"; };
+		1427B5151F3265B60027433E /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		1442E9331F354D4000079105 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		148A5F6E1EE20F0E001C20A5 /* GameColorsAndObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameColorsAndObjects.swift; sourceTree = "<group>"; };
+		148A5F701EE4D938001C20A5 /* GameColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameColor.swift; sourceTree = "<group>"; };
+		148A5F721EE558C4001C20A5 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
+		148A5F741EE75A3D001C20A5 /* GameStartPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStartPageViewController.swift; sourceTree = "<group>"; };
+		14CD7AED1EDCED03001AB42C /* ColorPuppers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorPuppers.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		14CD7AF01EDCED03001AB42C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		14CD7AF21EDCED03001AB42C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		14CD7AF51EDCED03001AB42C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		14CD7AF71EDCED03001AB42C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		14CD7AFA1EDCED03001AB42C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		14CD7AFC1EDCED03001AB42C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14CD7B011EDCED03001AB42C /* ColorPuppersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorPuppersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		14CD7B051EDCED03001AB42C /* ColorPuppersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPuppersTests.swift; sourceTree = "<group>"; };
+		14CD7B071EDCED03001AB42C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		14CD7B101EDE1170001AB42C /* MiniGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGame.swift; sourceTree = "<group>"; };
+		14CD7B141EDE3F4D001AB42C /* SquareButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquareButton.swift; sourceTree = "<group>"; };
+		14CD7B161EDF3ADA001AB42C /* Square.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Square.swift; sourceTree = "<group>"; };
+		14D16F091EE9456A00AC63F1 /* GameSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
+		14D16F0B1EE9D7A900AC63F1 /* HighScoresAndSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighScoresAndSettings.swift; sourceTree = "<group>"; };
+		14D16F0D1EEA119F00AC63F1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		14D16F0F1EEF5A8400AC63F1 /* MiniGameStage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGameStage.swift; sourceTree = "<group>"; };
+		14D16F111EF0B6C700AC63F1 /* GameObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
+		14D16F131EF1EA1500AC63F1 /* GamePlayParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayParameters.swift; sourceTree = "<group>"; };
+		22EE31E650FEFC38C3D8EDBA /* Pods-ColorPuppersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorPuppersTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ColorPuppersTests/Pods-ColorPuppersTests.release.xcconfig"; sourceTree = "<group>"; };
+		38B15DAF7F5566663CDE9DB6 /* Pods-ColorPuppers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorPuppers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorPuppers/Pods-ColorPuppers.debug.xcconfig"; sourceTree = "<group>"; };
+		A6AE98A8406B7D8E4EC05EBE /* Pods_ColorPuppers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorPuppers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B840A98054DC2F52647D143A /* Pods_ColorPuppersTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorPuppersTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C463F919E8825DC846A65F39 /* Pods-ColorPuppersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorPuppersTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorPuppersTests/Pods-ColorPuppersTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D1CF167EDD5A96D767EB2441 /* Pods-ColorPuppers.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorPuppers.release.xcconfig"; path = "Pods/Target Support Files/Pods-ColorPuppers/Pods-ColorPuppers.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		14CD7AEA1EDCED03001AB42C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				651177C3B2CAAC66A3D46507 /* Pods_ColorPuppers.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14CD7AFE1EDCED03001AB42C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CDD63F435BE7FA863B772DA1 /* Pods_ColorPuppersTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1427B5171F3266130027433E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				141CA1441F0783A300E7DA52 /* Sad Whine.m4a */,
+				141CA1421F07839500E7DA52 /* Bark.m4a */,
+				141CA1461F078BA900E7DA52 /* funky.mp3 */,
+				1427B5151F3265B60027433E /* Lato-Regular.ttf */,
+				1427B5131F32658B0027433E /* BEBAS___.ttf */,
+				1442E9331F354D4000079105 /* Lato-Bold.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		14CD7AE41EDCED03001AB42C = {
+			isa = PBXGroup;
+			children = (
+				1427B5171F3266130027433E /* Resources */,
+				14CD7AEF1EDCED03001AB42C /* ColorPuppers */,
+				14CD7B041EDCED03001AB42C /* ColorPuppersTests */,
+				14CD7AEE1EDCED03001AB42C /* Products */,
+				29D67CE8D2DCFE48C0985E1E /* Pods */,
+				C4CA5DD8749947CC026D28FD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		14CD7AEE1EDCED03001AB42C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				14CD7AED1EDCED03001AB42C /* ColorPuppers.app */,
+				14CD7B011EDCED03001AB42C /* ColorPuppersTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		14CD7AEF1EDCED03001AB42C /* ColorPuppers */ = {
+			isa = PBXGroup;
+			children = (
+				14D16F131EF1EA1500AC63F1 /* GamePlayParameters.swift */,
+				14D16F091EE9456A00AC63F1 /* GameSession.swift */,
+				14CD7B101EDE1170001AB42C /* MiniGame.swift */,
+				14D16F0F1EEF5A8400AC63F1 /* MiniGameStage.swift */,
+				14CD7B161EDF3ADA001AB42C /* Square.swift */,
+				148A5F6E1EE20F0E001C20A5 /* GameColorsAndObjects.swift */,
+				14D16F111EF0B6C700AC63F1 /* GameObject.swift */,
+				148A5F701EE4D938001C20A5 /* GameColor.swift */,
+				14D16F0B1EE9D7A900AC63F1 /* HighScoresAndSettings.swift */,
+				14D16F0D1EEA119F00AC63F1 /* SettingsViewController.swift */,
+				141CA14A1F1573EB00E7DA52 /* AboutPuppersViewController.swift */,
+				148A5F741EE75A3D001C20A5 /* GameStartPageViewController.swift */,
+				14CD7AF21EDCED03001AB42C /* GameViewController.swift */,
+				1427B5111F31210F0027433E /* PupperSplashViewController.swift */,
+				148A5F721EE558C4001C20A5 /* GameOverViewController.swift */,
+				14CD7B141EDE3F4D001AB42C /* SquareButton.swift */,
+				14CD7AF01EDCED03001AB42C /* AppDelegate.swift */,
+				141CA1401F037C7900E7DA52 /* Utilities.swift */,
+				14CD7AF41EDCED03001AB42C /* Main.storyboard */,
+				14CD7AF71EDCED03001AB42C /* Assets.xcassets */,
+				14CD7AF91EDCED03001AB42C /* LaunchScreen.storyboard */,
+				14CD7AFC1EDCED03001AB42C /* Info.plist */,
+				141CA14C1F15798700E7DA52 /* Slackey */,
+			);
+			name = ColorPuppers;
+			path = ColorClick;
+			sourceTree = "<group>";
+		};
+		14CD7B041EDCED03001AB42C /* ColorPuppersTests */ = {
+			isa = PBXGroup;
+			children = (
+				14CD7B051EDCED03001AB42C /* ColorPuppersTests.swift */,
+				14CD7B071EDCED03001AB42C /* Info.plist */,
+			);
+			name = ColorPuppersTests;
+			path = ColorClickTests;
+			sourceTree = "<group>";
+		};
+		29D67CE8D2DCFE48C0985E1E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				38B15DAF7F5566663CDE9DB6 /* Pods-ColorPuppers.debug.xcconfig */,
+				D1CF167EDD5A96D767EB2441 /* Pods-ColorPuppers.release.xcconfig */,
+				C463F919E8825DC846A65F39 /* Pods-ColorPuppersTests.debug.xcconfig */,
+				22EE31E650FEFC38C3D8EDBA /* Pods-ColorPuppersTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C4CA5DD8749947CC026D28FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A6AE98A8406B7D8E4EC05EBE /* Pods_ColorPuppers.framework */,
+				B840A98054DC2F52647D143A /* Pods_ColorPuppersTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		14CD7AEC1EDCED03001AB42C /* ColorPuppers */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14CD7B0A1EDCED03001AB42C /* Build configuration list for PBXNativeTarget "ColorPuppers" */;
+			buildPhases = (
+				6FFFA6C87A1D50A55DC567DE /* [CP] Check Pods Manifest.lock */,
+				14CD7AE91EDCED03001AB42C /* Sources */,
+				14CD7AEA1EDCED03001AB42C /* Frameworks */,
+				14CD7AEB1EDCED03001AB42C /* Resources */,
+				E60332FA8DA31BB7CFF72CDE /* [CP] Embed Pods Frameworks */,
+				1152B6CD19A740D9F71DC081 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ColorPuppers;
+			productName = ColorClick;
+			productReference = 14CD7AED1EDCED03001AB42C /* ColorPuppers.app */;
+			productType = "com.apple.product-type.application";
+		};
+		14CD7B001EDCED03001AB42C /* ColorPuppersTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 14CD7B0D1EDCED03001AB42C /* Build configuration list for PBXNativeTarget "ColorPuppersTests" */;
+			buildPhases = (
+				513D8E5F8984B6C6871FEA49 /* [CP] Check Pods Manifest.lock */,
+				14CD7AFD1EDCED03001AB42C /* Sources */,
+				14CD7AFE1EDCED03001AB42C /* Frameworks */,
+				14CD7AFF1EDCED03001AB42C /* Resources */,
+				B434D200B8DA68EB4161B45A /* [CP] Embed Pods Frameworks */,
+				E8C52DA5C42E812FAE55667E /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				14CD7B031EDCED03001AB42C /* PBXTargetDependency */,
+			);
+			name = ColorPuppersTests;
+			productName = ColorClickTests;
+			productReference = 14CD7B011EDCED03001AB42C /* ColorPuppersTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		14CD7AE51EDCED03001AB42C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "John Leibowitz";
+				TargetAttributes = {
+					14CD7AEC1EDCED03001AB42C = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = ZD3872UG8P;
+						ProvisioningStyle = Automatic;
+					};
+					14CD7B001EDCED03001AB42C = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = ZD3872UG8P;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 14CD7AEC1EDCED03001AB42C;
+					};
+				};
+			};
+			buildConfigurationList = 14CD7AE81EDCED03001AB42C /* Build configuration list for PBXProject "ColorPuppers" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 14CD7AE41EDCED03001AB42C;
+			productRefGroup = 14CD7AEE1EDCED03001AB42C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				14CD7AEC1EDCED03001AB42C /* ColorPuppers */,
+				14CD7B001EDCED03001AB42C /* ColorPuppersTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		14CD7AEB1EDCED03001AB42C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				141CA1431F07839600E7DA52 /* Bark.m4a in Resources */,
+				14CD7AFB1EDCED03001AB42C /* LaunchScreen.storyboard in Resources */,
+				141CA1471F078BA900E7DA52 /* funky.mp3 in Resources */,
+				14CD7AF81EDCED03001AB42C /* Assets.xcassets in Resources */,
+				141CA1451F0783A300E7DA52 /* Sad Whine.m4a in Resources */,
+				14CD7AF61EDCED03001AB42C /* Main.storyboard in Resources */,
+				1427B5161F3265B60027433E /* Lato-Regular.ttf in Resources */,
+				1442E9341F354D6700079105 /* Lato-Bold.ttf in Resources */,
+				1427B5141F32658B0027433E /* BEBAS___.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14CD7AFF1EDCED03001AB42C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1152B6CD19A740D9F71DC081 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ColorPuppers/Pods-ColorPuppers-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		513D8E5F8984B6C6871FEA49 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6FFFA6C87A1D50A55DC567DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B434D200B8DA68EB4161B45A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ColorPuppersTests/Pods-ColorPuppersTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E60332FA8DA31BB7CFF72CDE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ColorPuppers/Pods-ColorPuppers-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E8C52DA5C42E812FAE55667E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ColorPuppersTests/Pods-ColorPuppersTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		14CD7AE91EDCED03001AB42C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14CD7B171EDF3ADA001AB42C /* Square.swift in Sources */,
+				14D16F101EEF5A8400AC63F1 /* MiniGameStage.swift in Sources */,
+				148A5F731EE558C4001C20A5 /* GameOverViewController.swift in Sources */,
+				14D16F0A1EE9456A00AC63F1 /* GameSession.swift in Sources */,
+				14D16F141EF1EA1500AC63F1 /* GamePlayParameters.swift in Sources */,
+				14D16F121EF0B6C700AC63F1 /* GameObject.swift in Sources */,
+				141CA1411F037C7900E7DA52 /* Utilities.swift in Sources */,
+				14CD7B151EDE3F4D001AB42C /* SquareButton.swift in Sources */,
+				1427B5121F31210F0027433E /* PupperSplashViewController.swift in Sources */,
+				14CD7B111EDE1170001AB42C /* MiniGame.swift in Sources */,
+				148A5F711EE4D938001C20A5 /* GameColor.swift in Sources */,
+				14CD7AF31EDCED03001AB42C /* GameViewController.swift in Sources */,
+				148A5F751EE75A3D001C20A5 /* GameStartPageViewController.swift in Sources */,
+				14D16F0C1EE9D7A900AC63F1 /* HighScoresAndSettings.swift in Sources */,
+				148A5F6F1EE20F0E001C20A5 /* GameColorsAndObjects.swift in Sources */,
+				14CD7AF11EDCED03001AB42C /* AppDelegate.swift in Sources */,
+				14D16F0E1EEA119F00AC63F1 /* SettingsViewController.swift in Sources */,
+				141CA14B1F1573EB00E7DA52 /* AboutPuppersViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		14CD7AFD1EDCED03001AB42C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14CD7B061EDCED03001AB42C /* ColorPuppersTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		14CD7B031EDCED03001AB42C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 14CD7AEC1EDCED03001AB42C /* ColorPuppers */;
+			targetProxy = 14CD7B021EDCED03001AB42C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		14CD7AF41EDCED03001AB42C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14CD7AF51EDCED03001AB42C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		14CD7AF91EDCED03001AB42C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				14CD7AFA1EDCED03001AB42C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		14CD7B081EDCED03001AB42C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		14CD7B091EDCED03001AB42C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		14CD7B0B1EDCED03001AB42C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38B15DAF7F5566663CDE9DB6 /* Pods-ColorPuppers.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_ACTIVITY_MODE = "";
+				DEVELOPMENT_TEAM = ZD3872UG8P;
+				INFOPLIST_FILE = ColorClick/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = "";
+				"MTL_ENABLE_DEBUG_INFO[sdk=iphonesimulator*]" = disable;
+				PRODUCT_BUNDLE_IDENTIFIER = com.lebo.ColorPuppers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		14CD7B0C1EDCED03001AB42C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1CF167EDD5A96D767EB2441 /* Pods-ColorPuppers.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEBUG_ACTIVITY_MODE = "";
+				DEVELOPMENT_TEAM = ZD3872UG8P;
+				INFOPLIST_FILE = ColorClick/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lebo.ColorPuppers;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		14CD7B0E1EDCED03001AB42C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C463F919E8825DC846A65F39 /* Pods-ColorPuppersTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = ZD3872UG8P;
+				INFOPLIST_FILE = ColorClickTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lebo.ColorClickTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ColorPuppers.app/ColorPuppers";
+			};
+			name = Debug;
+		};
+		14CD7B0F1EDCED03001AB42C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22EE31E650FEFC38C3D8EDBA /* Pods-ColorPuppersTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = ZD3872UG8P;
+				INFOPLIST_FILE = ColorClickTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lebo.ColorClickTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ColorPuppers.app/ColorPuppers";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		14CD7AE81EDCED03001AB42C /* Build configuration list for PBXProject "ColorPuppers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14CD7B081EDCED03001AB42C /* Debug */,
+				14CD7B091EDCED03001AB42C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14CD7B0A1EDCED03001AB42C /* Build configuration list for PBXNativeTarget "ColorPuppers" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14CD7B0B1EDCED03001AB42C /* Debug */,
+				14CD7B0C1EDCED03001AB42C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		14CD7B0D1EDCED03001AB42C /* Build configuration list for PBXNativeTarget "ColorPuppersTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14CD7B0E1EDCED03001AB42C /* Debug */,
+				14CD7B0F1EDCED03001AB42C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 14CD7AE51EDCED03001AB42C /* Project object */;
+}
