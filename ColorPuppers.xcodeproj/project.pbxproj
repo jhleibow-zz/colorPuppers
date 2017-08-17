@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14046B741F39106900D32FA8 /* BadgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14046B731F39106900D32FA8 /* BadgesViewController.swift */; };
 		141CA1411F037C7900E7DA52 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CA1401F037C7900E7DA52 /* Utilities.swift */; };
 		141CA1431F07839600E7DA52 /* Bark.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 141CA1421F07839500E7DA52 /* Bark.m4a */; };
-		141CA1451F0783A300E7DA52 /* Sad Whine.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 141CA1441F0783A300E7DA52 /* Sad Whine.m4a */; };
 		141CA1471F078BA900E7DA52 /* funky.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 141CA1461F078BA900E7DA52 /* funky.mp3 */; };
 		141CA14B1F1573EB00E7DA52 /* AboutPuppersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CA14A1F1573EB00E7DA52 /* AboutPuppersViewController.swift */; };
 		1427B5121F31210F0027433E /* PupperSplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1427B5111F31210F0027433E /* PupperSplashViewController.swift */; };
 		1427B5141F32658B0027433E /* BEBAS___.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1427B5131F32658B0027433E /* BEBAS___.ttf */; };
 		1427B5161F3265B60027433E /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1427B5151F3265B60027433E /* Lato-Regular.ttf */; };
+		14378C6E1F3E64A000932B74 /* Sad Whine.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 14378C6D1F3E624F00932B74 /* Sad Whine.m4a */; };
 		1442E9341F354D6700079105 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1442E9331F354D4000079105 /* Lato-Bold.ttf */; };
 		148A5F6F1EE20F0E001C20A5 /* GameColorsAndObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148A5F6E1EE20F0E001C20A5 /* GameColorsAndObjects.swift */; };
 		148A5F711EE4D938001C20A5 /* GameColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148A5F701EE4D938001C20A5 /* GameColor.swift */; };
@@ -50,15 +51,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		14046B731F39106900D32FA8 /* BadgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgesViewController.swift; sourceTree = "<group>"; };
 		141CA1401F037C7900E7DA52 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		141CA1421F07839500E7DA52 /* Bark.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Bark.m4a; path = ColorClick/Bark.m4a; sourceTree = "<group>"; };
-		141CA1441F0783A300E7DA52 /* Sad Whine.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Sad Whine.m4a"; path = "ColorClick/Sad Whine.m4a"; sourceTree = "<group>"; };
 		141CA1461F078BA900E7DA52 /* funky.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = funky.mp3; path = ColorClick/funky.mp3; sourceTree = "<group>"; };
 		141CA14A1F1573EB00E7DA52 /* AboutPuppersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutPuppersViewController.swift; sourceTree = "<group>"; };
-		141CA14C1F15798700E7DA52 /* Slackey */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Slackey; sourceTree = "<group>"; };
 		1427B5111F31210F0027433E /* PupperSplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PupperSplashViewController.swift; sourceTree = "<group>"; };
 		1427B5131F32658B0027433E /* BEBAS___.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BEBAS___.ttf"; sourceTree = "<group>"; };
 		1427B5151F3265B60027433E /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		14378C6D1F3E624F00932B74 /* Sad Whine.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sad Whine.m4a"; sourceTree = "<group>"; };
 		1442E9331F354D4000079105 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		148A5F6E1EE20F0E001C20A5 /* GameColorsAndObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameColorsAndObjects.swift; sourceTree = "<group>"; };
 		148A5F701EE4D938001C20A5 /* GameColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameColor.swift; sourceTree = "<group>"; };
@@ -114,7 +115,7 @@
 		1427B5171F3266130027433E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				141CA1441F0783A300E7DA52 /* Sad Whine.m4a */,
+				14378C6D1F3E624F00932B74 /* Sad Whine.m4a */,
 				141CA1421F07839500E7DA52 /* Bark.m4a */,
 				141CA1461F078BA900E7DA52 /* funky.mp3 */,
 				1427B5151F3265B60027433E /* Lato-Regular.ttf */,
@@ -160,6 +161,7 @@
 				14D16F0D1EEA119F00AC63F1 /* SettingsViewController.swift */,
 				141CA14A1F1573EB00E7DA52 /* AboutPuppersViewController.swift */,
 				148A5F741EE75A3D001C20A5 /* GameStartPageViewController.swift */,
+				14046B731F39106900D32FA8 /* BadgesViewController.swift */,
 				14CD7AF21EDCED03001AB42C /* GameViewController.swift */,
 				1427B5111F31210F0027433E /* PupperSplashViewController.swift */,
 				148A5F721EE558C4001C20A5 /* GameOverViewController.swift */,
@@ -170,7 +172,6 @@
 				14CD7AF71EDCED03001AB42C /* Assets.xcassets */,
 				14CD7AF91EDCED03001AB42C /* LaunchScreen.storyboard */,
 				14CD7AFC1EDCED03001AB42C /* Info.plist */,
-				141CA14C1F15798700E7DA52 /* Slackey */,
 			);
 			name = ColorPuppers;
 			path = ColorClick;
@@ -298,10 +299,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				141CA1431F07839600E7DA52 /* Bark.m4a in Resources */,
+				14378C6E1F3E64A000932B74 /* Sad Whine.m4a in Resources */,
 				14CD7AFB1EDCED03001AB42C /* LaunchScreen.storyboard in Resources */,
 				141CA1471F078BA900E7DA52 /* funky.mp3 in Resources */,
 				14CD7AF81EDCED03001AB42C /* Assets.xcassets in Resources */,
-				141CA1451F0783A300E7DA52 /* Sad Whine.m4a in Resources */,
 				14CD7AF61EDCED03001AB42C /* Main.storyboard in Resources */,
 				1427B5161F3265B60027433E /* Lato-Regular.ttf in Resources */,
 				1442E9341F354D6700079105 /* Lato-Bold.ttf in Resources */,
@@ -432,6 +433,7 @@
 				14D16F0C1EE9D7A900AC63F1 /* HighScoresAndSettings.swift in Sources */,
 				148A5F6F1EE20F0E001C20A5 /* GameColorsAndObjects.swift in Sources */,
 				14CD7AF11EDCED03001AB42C /* AppDelegate.swift in Sources */,
+				14046B741F39106900D32FA8 /* BadgesViewController.swift in Sources */,
 				14D16F0E1EEA119F00AC63F1 /* SettingsViewController.swift in Sources */,
 				141CA14B1F1573EB00E7DA52 /* AboutPuppersViewController.swift in Sources */,
 			);

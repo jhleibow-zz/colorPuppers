@@ -188,10 +188,8 @@ class GameViewController: UIViewController {
     
     //transitions to reaction view controller
     private func transitionToNextView() {
-        //TODO: need to read skip doggophotos and go directly to new game if needed
+        
         let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        
-        
         
         if correct! {
             let reactionViewController: PupperSplashViewController = myStoryBoard.instantiateViewController(withIdentifier: "PupperSplashViewControllerID") as! PupperSplashViewController

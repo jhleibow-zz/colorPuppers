@@ -16,6 +16,7 @@ class PupperSplashViewController: UIViewController {
     //MARK: - Properties
     
     @IBOutlet weak var reactionImage: UIImageView!
+    @IBOutlet weak var congratsImage: UIImageView!
     
     //audio player
     var audioPlayer: AVAudioPlayer!
@@ -58,9 +59,27 @@ class PupperSplashViewController: UIViewController {
             print ("audio file not found")
         }
         
-        reactionImage.image = UIImage(named: getHappyDogPhotoName())
-        //provide first way to move on from Reaction Image view by timer
-        moveOnTimer = Timer.scheduledTimer(timeInterval: TimeInterval(viewingTime), target: self, selector: #selector(nextStage), userInfo: nil, repeats: false)
+        
+        if shouldShowTrophyCongrats() {
+            reactionImage.image = UIImage(named: "TrophyBackground")
+            congratsImage.alpha = 1.0
+            congratsImage.image = UIImage(named: "NewTrophy")
+            //provide first way to move on from Reaction Image view by timer
+            moveOnTimer = Timer.scheduledTimer(timeInterval: TimeInterval(viewingTime * 4), target: self, selector: #selector(nextStage), userInfo: nil, repeats: false)
+        } else if shouldShowHighScoreCongrats() {
+            reactionImage.image = UIImage(named: "HighScoreBackground")
+            congratsImage.alpha = 1.0
+            congratsImage.image = UIImage(named: "NewHighScore")
+            //provide first way to move on from Reaction Image view by timer
+            moveOnTimer = Timer.scheduledTimer(timeInterval: TimeInterval(viewingTime * 4), target: self, selector: #selector(nextStage), userInfo: nil, repeats: false)
+        } else {
+            reactionImage.image = UIImage(named: Utilities.getHappyDogPhotoName())
+            congratsImage.alpha = 0.0
+            //provide first way to move on from Reaction Image view by timer
+            moveOnTimer = Timer.scheduledTimer(timeInterval: TimeInterval(viewingTime), target: self, selector: #selector(nextStage), userInfo: nil, repeats: false)
+        }
+        
+
 
         
         if gameSession.highScoresAndSettings!.soundOn  {
@@ -90,11 +109,71 @@ class PupperSplashViewController: UIViewController {
         
     }
    
-    private func getHappyDogPhotoName() -> String {
-        var returnString = "happydog"
-        returnString += String(arc4random_uniform(9))
-        return returnString
+
+
+    private func shouldShowTrophyCongrats() -> Bool {
+        
+        let passedLevel = gameSession.getCurrentLevel() - 1
+        
+        if passedLevel == 0 || passedLevel % GamePlayParameters.Badges.increment != 0 || passedLevel > GamePlayParameters.Badges.level4 {
+            return false
+        }
+        
+        switch gameSession.currentDifficulty! {
+            
+        case GameSession.Difficulty.easy:
+            if gameSession.highScoresAndSettings!.easyHighScore < passedLevel {
+                return true
+            }
+            
+        case GameSession.Difficulty.medium:
+            if gameSession.highScoresAndSettings!.mediumHighScore < passedLevel {
+                return true
+            }
+        case GameSession.Difficulty.hard:
+            if gameSession.highScoresAndSettings!.hardHighScore < passedLevel {
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    private func shouldShowHighScoreCongrats() -> Bool {
+        
+        if gameSession.highScoreCongratulationsShown {
+            return false
+        }
+        
+        let passedLevel = gameSession.getCurrentLevel() - 1
+        
+        if passedLevel == 0 {
+            return false
+        }
+        
+        switch gameSession.currentDifficulty! {
+            
+        case GameSession.Difficulty.easy:
+            if gameSession.highScoresAndSettings!.easyHighScore < passedLevel {
+                gameSession.highScoreCongratulationsShown = true
+                return true
+            }
+            
+        case GameSession.Difficulty.medium:
+            if gameSession.highScoresAndSettings!.mediumHighScore < passedLevel {
+                gameSession.highScoreCongratulationsShown = true
+                return true
+            }
+        case GameSession.Difficulty.hard:
+            if gameSession.highScoresAndSettings!.hardHighScore < passedLevel {
+                gameSession.highScoreCongratulationsShown = true
+                return true
+            }
+        }
+        
+        return false
     }
 
+    
 
 }

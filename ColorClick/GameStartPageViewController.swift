@@ -19,7 +19,7 @@ class GameStartPageViewController: UIViewController {
     @IBOutlet weak var pupperInfoButton: UIButton!
     @IBOutlet weak var settingsButton: UIButton!
     
-    @IBOutlet weak var boneButton: UIButton!
+    @IBOutlet weak var badgeButton: UIButton!
     
     @IBOutlet weak var easyHighScoreLabel: UILabel!
     @IBOutlet weak var mediumHighScoreLabel: UILabel!
@@ -58,16 +58,16 @@ class GameStartPageViewController: UIViewController {
 
     @IBAction func pupperInfoButtonTap(_ sender: UIButton) {
         stopAnimations()
-        goToSettings()
+        goToPupperInfo()
     }
     
     @IBAction func settingsButtonTap(_ sender: UIButton) {
         stopAnimations()
         goToSettings()
     }
-    @IBAction func boneButtonTap(_ sender: UIButton) {
+    @IBAction func badgeButtonTap(_ sender: UIButton) {
         stopAnimations()
-        goToSettings()
+        goToBadges()
     }
     
     
@@ -76,6 +76,7 @@ class GameStartPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        stopAnimations()
         colorMenuButtons()
         resizeText()
         updateHighScoreLabel()
@@ -85,30 +86,36 @@ class GameStartPageViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        
         super.viewDidAppear(animated)
-        animateBone(radians: CGFloat.pi/18, counter: 0, delay: 0.0)
+        stopAnimations()
+        animateBadge(radians: CGFloat.pi/48, counter: 0, delay: 0.0)
     }
     
   
     //MARK: - Private Methods
     
-    private func animateBone(radians: CGFloat, counter: Int, delay: CGFloat) {
+    private func animateBadge(radians: CGFloat, counter: Int, delay: CGFloat) {
         var count = counter
+        
         UIView.animate(withDuration: 0.1, delay: TimeInterval(delay), usingSpringWithDamping: 0.2, initialSpringVelocity: 5.5, options: [.allowUserInteraction], animations: {
-                self.boneButton.transform = CGAffineTransform(rotationAngle: radians)
+                self.badgeButton.transform = CGAffineTransform(rotationAngle: radians)
         }, completion: { finished in
             count = count + 1
-            if count == 6 {
+            if !finished {
+                self.badgeButton.layer.removeAllAnimations()
+            } else if count == 6 {
                 count = 0
-                self.animateBone(radians: -radians, counter: count, delay: 1.0)
+                self.animateBadge(radians: -radians, counter: count, delay: 1.0)
             } else {
-                self.animateBone(radians: -radians, counter: count, delay: 0.0)
+                self.animateBadge(radians: -radians, counter: count, delay: 0.0)
             }
         } )
     }
     
     private func stopAnimations() {
-        self.boneButton.layer.removeAllAnimations()
+        //self.badgeButton.layer.removeAllAnimations()
+        view.layer.removeAllAnimations()
     }
   
 
@@ -127,6 +134,25 @@ class GameStartPageViewController: UIViewController {
         let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: "settingsViewControllerID") as! SettingsViewController
         nextViewController.gameSession = gameSession
+        self.present(nextViewController, animated: true, completion: nil)
+    }
+    
+    //navigate to badges page
+    private func goToBadges() {
+        let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: "badgesViewControllerID") as! BadgesViewController
+        nextViewController.gameSession = gameSession
+        nextViewController.sendingViewControllerName = "gameStartPageViewControllerID"
+        self.present(nextViewController, animated: true, completion: nil)
+    }
+    
+    
+    //navigate to pupper info page
+    private func goToPupperInfo() {
+        let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: "pupperInfoPageViewControllerID") as! AboutPuppersViewController
+        nextViewController.gameSession = gameSession
+        nextViewController.sendingViewControllerName = "gameStartPageViewControllerID"
         self.present(nextViewController, animated: true, completion: nil)
     }
     
@@ -176,9 +202,9 @@ class GameStartPageViewController: UIViewController {
     //updates high score label
     private func updateHighScoreLabel() {
         
-        easyHighScoreLabel.text = String(gameSession!.highScoresAndSettings!.easyHighScore)
-        mediumHighScoreLabel.text = String(gameSession!.highScoresAndSettings!.mediumHighScore)
-        hardHighScoreLabel.text = String(gameSession!.highScoresAndSettings!.hardHighScore)
+        easyHighScoreLabel.text = String(gameSession!.highScoresAndSettings!.getEasyHighScore())
+        mediumHighScoreLabel.text = String(gameSession!.highScoresAndSettings!.getMediumHighScore())
+        hardHighScoreLabel.text = String(gameSession!.highScoresAndSettings!.getHardHighScore())
         
     }
 

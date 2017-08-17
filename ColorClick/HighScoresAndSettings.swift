@@ -16,6 +16,7 @@ class HighScoresAndSettings: NSObject, NSCoding {
     var mediumHighScore: Int
     var hardHighScore: Int
     var soundOn: Bool
+    var musicOn: Bool
     
     
     //MARK: - Archiving Paths
@@ -30,11 +31,12 @@ class HighScoresAndSettings: NSObject, NSCoding {
         static let mediumHighScore = "mediumHighScore"
         static let hardHighScore = "hardHighScore"
         static let soundOn = "soundOn"
+        static let musicOn = "musicOn"
     }
     
     
     //MARK: - Initialization
-    init(easyHighScore: Int?, mediumHighScore: Int?, hardHighScore: Int?, soundOn: Bool?) {
+    init(easyHighScore: Int?, mediumHighScore: Int?, hardHighScore: Int?, soundOn: Bool?, musicOn: Bool?) {
 
         if easyHighScore == nil {
             self.easyHighScore = 0
@@ -59,6 +61,12 @@ class HighScoresAndSettings: NSObject, NSCoding {
         } else {
             self.soundOn = soundOn!
         }
+        
+        if musicOn == nil {
+            self.musicOn = true
+        } else {
+            self.musicOn = musicOn!
+        }
        
     }
      
@@ -70,6 +78,7 @@ class HighScoresAndSettings: NSObject, NSCoding {
         aCoder.encode(mediumHighScore, forKey: PropertyKey.mediumHighScore)
         aCoder.encode(hardHighScore, forKey: PropertyKey.hardHighScore)
         aCoder.encode(soundOn, forKey: PropertyKey.soundOn)
+        aCoder.encode(musicOn, forKey: PropertyKey.musicOn)
     }
     
     required convenience init?(coder aDecoder: NSCoder) {
@@ -77,10 +86,25 @@ class HighScoresAndSettings: NSObject, NSCoding {
         let mediumHighScore = aDecoder.decodeInteger(forKey: PropertyKey.mediumHighScore)
         let hardHighScore = aDecoder.decodeInteger(forKey: PropertyKey.mediumHighScore)
         let soundOn = aDecoder.decodeBool(forKey: PropertyKey.soundOn)
+        let musicOn = aDecoder.decodeBool(forKey: PropertyKey.musicOn)
         
-        self.init(easyHighScore: easyHighScore, mediumHighScore: mediumHighScore, hardHighScore: hardHighScore, soundOn: soundOn)
+        self.init(easyHighScore: easyHighScore, mediumHighScore: mediumHighScore, hardHighScore: hardHighScore, soundOn: soundOn, musicOn: musicOn)
     }
     
+    
+    //MARK: - Public Methods
+    
+    func getHardHighScore() -> Int {
+        return hardHighScore
+    }
+    
+    func getMediumHighScore() -> Int {
+        return mediumHighScore
+    }
+    
+    func getEasyHighScore() -> Int {
+        return easyHighScore
+    }
 
     
 }

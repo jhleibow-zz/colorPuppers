@@ -213,19 +213,48 @@ class MiniGame {
             withOrThatSays = "that does not have "
         }
         
-        let beginning = NSAttributedString(string: "Tap square \(withOrThatSays)\(aOrAn)")
+
+        
+        var beginning = NSAttributedString(string: "Tap square \(withOrThatSays)\(aOrAn)")
         var middle: NSAttributedString
         var end: NSAttributedString
+
+        
+        var justAColoredSquare = false
+        //if its just a colored square
+        if miniGameStage.hasBackground && !miniGameStage.fillerAddFontColors && !miniGameStage.fillerAddWords && !miniGameStage.fillerAddObjects && !miniGameStage.fillerAddObjectColors {
+            justAColoredSquare = true
+            beginning = NSAttributedString(string: "Tap ")
+        }
+
+        var justAColoredSquareNot = false
+        //if its just a colored square
+        if miniGameStage.notHaveBackground && !miniGameStage.fillerAddFontColors && !miniGameStage.fillerAddWords && !miniGameStage.fillerAddObjects && !miniGameStage.fillerAddObjectColors {
+            justAColoredSquareNot = true
+            beginning = NSAttributedString(string: "Tap square that is not ")
+        }
+
+        
+       
+        
         
         var tempGameColor: GameColor
-        
+     
         if miniGameStage.descriptionConfusingColor {
             tempGameColor = gameColorsAndObjects.getRandomGameColor(butNot: [subjectColor])
         } else {
             tempGameColor = GameColor.white
         }
         
-        if colorDescriptor1 != "" {
+        
+        
+        if justAColoredSquareNot {
+            middle = NSAttributedString(string: colorDescriptor1, attributes: [NSForegroundColorAttributeName: tempGameColor.fontColor])
+            end = NSAttributedString(string: "")
+        } else if justAColoredSquare {
+            middle = NSAttributedString(string: colorDescriptor1, attributes: [NSForegroundColorAttributeName: tempGameColor.fontColor])
+            end = NSAttributedString(string: " square")
+        } else if colorDescriptor1 != "" {
             middle = NSAttributedString(string: colorDescriptor1, attributes: [NSForegroundColorAttributeName: tempGameColor.fontColor])
             end = NSAttributedString(string: subjectString1)
         } else {
@@ -377,7 +406,7 @@ class MiniGame {
     
     private func updateSquareFontColors() {
         
-        //set word for right answer
+        //set font for right answer
         if miniGameStage.chosenFontColor != nil {
             squareCollection[answerIndex!].squareFontColor = miniGameStage.chosenFontColor
         } else if miniGameStage.fontColorEqualsWord && wordUpdated {
@@ -398,7 +427,7 @@ class MiniGame {
             miniGameStage.utilizedFontColors.append(randomColor)
         }
         
-        //set words for other squares
+        //set font for other squares
         for index in 0..<squareCollection.count {
             if index != answerIndex! {
                 let randomColor = gameColorsAndObjects.getRandomGameColor(butNot: miniGameStage.utilizedFontColors)

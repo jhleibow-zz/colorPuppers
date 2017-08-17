@@ -58,7 +58,7 @@
                   moduleName = "ColorPuppers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/johnleibowitz/Documents/iOS%20dev/ColorPuppers/ColorClick/HighScoresAndSettings.swift"
-                  timestampString = "523669769.102185"
+                  timestampString = "524643406.207798"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -73,7 +73,7 @@
                   moduleName = "ColorPuppers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/johnleibowitz/Documents/iOS%20dev/ColorPuppers/ColorClick/HighScoresAndSettings.swift"
-                  timestampString = "523669769.103957"
+                  timestampString = "524643406.211768"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "11"
@@ -88,7 +88,7 @@
                   moduleName = "ColorPuppers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/johnleibowitz/Documents/iOS%20dev/ColorPuppers/ColorClick/HighScoresAndSettings.swift"
-                  timestampString = "523669769.106252"
+                  timestampString = "524643406.214214"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -96,38 +96,6 @@
                   offsetFromSymbolStart = "12">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ColorClick/SettingsViewController.swift"
-            timestampString = "523522367.143503"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
-            landmarkName = "updateSoundOnText()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ColorClick/SettingsViewController.swift"
-            timestampString = "523522367.143503"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "toggleSoundOn()"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

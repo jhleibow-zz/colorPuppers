@@ -20,6 +20,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var resetHighScoreButton: UIButton!
     @IBOutlet weak var settingsLabel: UILabel!
     
+    @IBOutlet weak var badgeButton: UIButton!
+    
     @IBOutlet weak var easyHighScoreLabel: UILabel!
     @IBOutlet weak var mediumHighScoreLabel: UILabel!
     @IBOutlet weak var hardHighScoreLabel: UILabel!
@@ -44,16 +46,22 @@ class SettingsViewController: UIViewController {
         goBackToStartPage()
     }
     @IBAction func pupperInfoButtonTap(_ sender: UIButton) {
-        
+        goToPupperInfo()
     }
     @IBAction func soundButtonTap(_ sender: UIButton) {
         toggleSoundOn()
     }
     @IBAction func musicButtonTap(_ sender: UIButton) {
-    
+        toggleMusicOn()
     }    
     @IBAction func resetHighScoreButtonTap(_ sender: UIButton) {
         gameSession.resetHighScores()
+        updateHighScoreLabel()
+        
+    }
+    @IBAction func badgeButtonTap(_ sender: UIButton) {
+        stopAnimations()
+        goToBadges()
     }
     
     
@@ -65,9 +73,18 @@ class SettingsViewController: UIViewController {
         //colorSettingsButtons()
         resizeText()
         updateSoundOnText()
+        updateMusicOnText()
+        updateHighScoreLabel()
     }
 
 
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+        stopAnimations()
+        animateBadge(radians: CGFloat.pi/48, counter: 0, delay: 0.0)
+    }
+    
 
     //MARK: - Private Methods
     
@@ -102,14 +119,30 @@ class SettingsViewController: UIViewController {
         self.present(nextViewController, animated: true, completion: nil)
     }
     
+    //navigate to badges page
+    private func goToBadges() {
+        let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: "badgesViewControllerID") as! BadgesViewController
+        nextViewController.gameSession = gameSession
+        nextViewController.sendingViewControllerName = "settingsViewControllerID"
+        self.present(nextViewController, animated: true, completion: nil)
+    }
+    
+    //navigate to pupper info page
+    private func goToPupperInfo() {
+        let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: "pupperInfoPageViewControllerID") as! AboutPuppersViewController
+        nextViewController.gameSession = gameSession
+        nextViewController.sendingViewControllerName = "settingsViewControllerID"
+        self.present(nextViewController, animated: true, completion: nil)
+    }
+    
     //toggles setting
     private func toggleSoundOn() {
         if gameSession.highScoresAndSettings!.soundOn {
             gameSession.highScoresAndSettings!.soundOn = false
-            gameSession.stopMusic()
         } else {
             gameSession.highScoresAndSettings!.soundOn = true
-            gameSession.playMusic()
         }
         gameSession.saveScoresAndSettings()
         updateSoundOnText()
@@ -126,6 +159,30 @@ class SettingsViewController: UIViewController {
         
     }
     
+    //toggles setting
+    private func toggleMusicOn() {
+        if gameSession.highScoresAndSettings!.musicOn {
+            gameSession.highScoresAndSettings!.musicOn = false
+            gameSession.stopMusic()
+        } else {
+            gameSession.highScoresAndSettings!.musicOn = true
+            gameSession.playMusic()
+        }
+        gameSession.saveScoresAndSettings()
+        updateMusicOnText()
+    }
+    
+    //updates text to match setting
+    private func updateMusicOnText() {
+        
+        if gameSession.highScoresAndSettings!.musicOn {
+            musicButton.setTitle("MUSIC: ON", for: .normal)
+        } else {
+            musicButton.setTitle("MUSIC: OFF", for: .normal)
+        }
+        
+    }
+    
     //updates button text size
     private func resizeText() {
         
@@ -138,14 +195,49 @@ class SettingsViewController: UIViewController {
         Utilities.updateLabelFont(label: highLabel, fontName: GamePlayParameters.Fonts.gameFontName)
         Utilities.updateLabelFont(label: scoresLabel, fontName: GamePlayParameters.Fonts.gameFontName)
         
-        Utilities.updateButtonFontSize(button: goBackButton, fontName: GamePlayParameters.Fonts.buttonFontName, scaleDownFromHeightFactor: 2.1)
-        Utilities.updateButtonFontSize(button: soundButton, fontName: GamePlayParameters.Fonts.buttonFontName, scaleDownFromHeightFactor: 2.1)
-        Utilities.updateButtonFontSize(button: musicButton, fontName: GamePlayParameters.Fonts.buttonFontName, scaleDownFromHeightFactor: 2.1)
-        Utilities.updateButtonFontSize(button: pupperInfoButton, fontName: GamePlayParameters.Fonts.buttonFontName, scaleDownFromHeightFactor: 2.1)
-        Utilities.updateButtonFontSize(button: resetHighScoreButton, fontName: GamePlayParameters.Fonts.buttonFontName, scaleDownFromHeightFactor: 2.1)
+        Utilities.updateLabelFontAttributed(label: settingsLabel, fontName: GamePlayParameters.Fonts.gameFontName, alignment: .center, characterSpacing: 5.0, scaleDownFromHeightFactor: 2.7)
+        
+        Utilities.updateButtonFontSize(button: goBackButton, fontName: GamePlayParameters.Fonts.buttonFontName, scaleDownFromHeightFactor: 2.5)
+        Utilities.updateButtonFontSize(button: soundButton, fontName: GamePlayParameters.Fonts.buttonFontName, scaleDownFromHeightFactor: 2.5)
+        Utilities.updateButtonFontSize(button: musicButton, fontName: GamePlayParameters.Fonts.buttonFontName, scaleDownFromHeightFactor: 2.5)
+        Utilities.updateButtonFontSize(button: pupperInfoButton, fontName: GamePlayParameters.Fonts.buttonFontName, scaleDownFromHeightFactor: 2.5)
+        Utilities.updateButtonFontSize(button: resetHighScoreButton, fontName: GamePlayParameters.Fonts.buttonFontName, scaleDownFromHeightFactor: 2.5)
         
         
     }
     
+    //MARK: - Private Methods
+    
+    private func animateBadge(radians: CGFloat, counter: Int, delay: CGFloat) {
+        var count = counter
+        
+        UIView.animate(withDuration: 0.1, delay: TimeInterval(delay), usingSpringWithDamping: 0.2, initialSpringVelocity: 5.5, options: [.allowUserInteraction], animations: {
+            self.badgeButton.transform = CGAffineTransform(rotationAngle: radians)
+        }, completion: { finished in
+            count = count + 1
+            if !finished {
+                self.badgeButton.layer.removeAllAnimations()
+            } else if count == 6 {
+                count = 0
+                self.animateBadge(radians: -radians, counter: count, delay: 1.0)
+            } else {
+                self.animateBadge(radians: -radians, counter: count, delay: 0.0)
+            }
+        } )
+    }
+    
+    private func stopAnimations() {
+        //self.badgeButton.layer.removeAllAnimations()
+        view.layer.removeAllAnimations()
+    }
+    
+    //updates high score label
+    private func updateHighScoreLabel() {
+        
+        easyHighScoreLabel.text = String(gameSession!.highScoresAndSettings!.getEasyHighScore())
+        mediumHighScoreLabel.text = String(gameSession!.highScoresAndSettings!.getMediumHighScore())
+        hardHighScoreLabel.text = String(gameSession!.highScoresAndSettings!.getHardHighScore())
+        
+    }
     
 }

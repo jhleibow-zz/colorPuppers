@@ -38,6 +38,10 @@ class GameSession: NSObject, GADRewardBasedVideoAdDelegate {
     
     var watchedAd = false
     
+    var numberOfAdsWatchedThisGame = 0
+    
+    var highScoreCongratulationsShown: Bool = false
+    
     var audioPlayer: AVAudioPlayer!
     
     var rewardVideo: GADRewardBasedVideoAd?
@@ -57,7 +61,7 @@ class GameSession: NSObject, GADRewardBasedVideoAdDelegate {
         if let highScoresAndSettings = loadScoresAndSettings() {
             self.highScoresAndSettings = highScoresAndSettings
         } else {
-            self.highScoresAndSettings = HighScoresAndSettings(easyHighScore: nil, mediumHighScore: nil, hardHighScore: nil, soundOn: nil)
+            self.highScoresAndSettings = HighScoresAndSettings(easyHighScore: nil, mediumHighScore: nil, hardHighScore: nil, soundOn: nil, musicOn: nil)
         }
         
         //oberserver for when game loses focus
@@ -81,6 +85,7 @@ class GameSession: NSObject, GADRewardBasedVideoAdDelegate {
     
     func minigamePassed() {
         incrementCurrentLevel()
+        
     }
     
     func miniGameFailed() {
@@ -89,24 +94,28 @@ class GameSession: NSObject, GADRewardBasedVideoAdDelegate {
     
     func startNewGame(difficulty: GameSession.Difficulty) {
         resetCurrentAndUnlockedLevel()
+        highScoreCongratulationsShown = false
         currentDifficulty = difficulty
     }
     
     func updateHighScores() {
+
+        let passedLevel = getCurrentLevel() - 1
+        
         switch currentDifficulty! {
-            
+           
         case GameSession.Difficulty.easy:
-            if highScoresAndSettings!.easyHighScore < getCurrentLevel() {
-                highScoresAndSettings!.easyHighScore = getCurrentLevel()
+            if highScoresAndSettings!.easyHighScore < passedLevel {
+                highScoresAndSettings!.easyHighScore = passedLevel
             }
             
         case GameSession.Difficulty.medium:
-            if highScoresAndSettings!.mediumHighScore < getCurrentLevel() {
-                highScoresAndSettings!.mediumHighScore = getCurrentLevel()
+            if highScoresAndSettings!.mediumHighScore < passedLevel {
+                highScoresAndSettings!.mediumHighScore = passedLevel
             }
         case GameSession.Difficulty.hard:
-            if highScoresAndSettings!.hardHighScore < getCurrentLevel() {
-                highScoresAndSettings!.hardHighScore = getCurrentLevel()
+            if highScoresAndSettings!.hardHighScore < passedLevel {
+                highScoresAndSettings!.hardHighScore = passedLevel
             }
         }
         
@@ -133,6 +142,7 @@ class GameSession: NSObject, GADRewardBasedVideoAdDelegate {
     }
     
     func resetCurrentAndUnlockedLevel() {
+        numberOfAdsWatchedThisGame = 0
         currentLevel = 1
         stageTypeUnlocked = 0
         fillerUnlocked = 0
@@ -178,6 +188,20 @@ class GameSession: NSObject, GADRewardBasedVideoAdDelegate {
     }
     
     
+    @objc func pauseGame() {
+        if audioPlayer != nil {
+            audioPlayer.pause()
+        }
+        
+    }
+    
+    @objc func unpauseGame() {
+        if highScoresAndSettings!.musicOn {
+            audioPlayer.play()
+        }
+    }
+    
+    
     //MARK: - Private Methods
     private func loadScoresAndSettings() -> HighScoresAndSettings? {
         return NSKeyedUnarchiver.unarchiveObject(withFile: HighScoresAndSettings.ArchiveURL.path) as? HighScoresAndSettings
@@ -214,18 +238,7 @@ class GameSession: NSObject, GADRewardBasedVideoAdDelegate {
 
     }
     
-    @objc private func pauseGame() {
-        if audioPlayer != nil {
-            audioPlayer.pause()
-        }
-        
-    }
-    
-    @objc private func unpauseGame() {
-        if highScoresAndSettings!.soundOn {
-            audioPlayer.play()
-        }
-    }
+
     
     private func updateFillerUnlocked() {
         
@@ -347,7 +360,7 @@ class GameSession: NSObject, GADRewardBasedVideoAdDelegate {
         watchedAd = true
         //load next video
         rewardVideo?.load(GADRequest(), withAdUnitID: GamePlayParameters.AdMob.testAdUnitID)
-        
+        numberOfAdsWatchedThisGame = numberOfAdsWatchedThisGame + 1
         delegate?.adWasWatched(true)
         
     }
