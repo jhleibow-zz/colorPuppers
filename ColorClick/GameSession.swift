@@ -12,18 +12,23 @@ import GoogleMobileAds
 
 
 //MARK: - Protocols
-protocol GameSessionDelegate: class {
+protocol GameSessionAdDelegate: class {
     func adWasWatched(_ result: Bool)
 }
 
+protocol GameSessionAnimationDelegate: class{
+    func focusReturnedStartAnimationAgain()
+}
 
-class GameSession: NSObject, GADRewardBasedVideoAdDelegate {
+
+class GameSession: NSObject, GADRewardBasedVideoAdDelegate, UIViewControllerAnimatedTransitioning {
     
 
     
     //MARK: - Properties
     
-    weak var delegate: GameSessionDelegate?
+    weak var adDelegate: GameSessionAdDelegate?
+    weak var animationDelegate: GameSessionAnimationDelegate?
     
     var miniGame = MiniGame()
     private var currentLevel = 1
@@ -90,6 +95,9 @@ class GameSession: NSObject, GADRewardBasedVideoAdDelegate {
     
     func miniGameFailed() {
         updateHighScores()
+        if rewardVideo?.isReady == false {
+            rewardVideo?.load(GADRequest(), withAdUnitID: GamePlayParameters.AdMob.testAdUnitID)
+        }
     }
     
     func startNewGame(difficulty: GameSession.Difficulty) {
@@ -199,6 +207,8 @@ class GameSession: NSObject, GADRewardBasedVideoAdDelegate {
         if highScoresAndSettings!.musicOn {
             audioPlayer.play()
         }
+        animationDelegate?.focusReturnedStartAnimationAgain()
+        print("animation delegate just ran?")
     }
     
     
@@ -348,7 +358,7 @@ class GameSession: NSObject, GADRewardBasedVideoAdDelegate {
     func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
         print("Reward based video ad is closed.")
         rewardVideo?.load(GADRequest(), withAdUnitID: GamePlayParameters.AdMob.testAdUnitID)
-        delegate?.adWasWatched(false)
+        adDelegate?.adWasWatched(false)
     }
     
     func rewardBasedVideoAdWillLeaveApplication(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
@@ -361,8 +371,59 @@ class GameSession: NSObject, GADRewardBasedVideoAdDelegate {
         //load next video
         rewardVideo?.load(GADRequest(), withAdUnitID: GamePlayParameters.AdMob.testAdUnitID)
         numberOfAdsWatchedThisGame = numberOfAdsWatchedThisGame + 1
-        delegate?.adWasWatched(true)
+        adDelegate?.adWasWatched(true)
         
     }
     
+    //MARK: - UIViewControllerAnimatedTransitioning
+    
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        return GamePlayParameters.TransitionTiming.gameTransitionTime
+    }
+    
+    func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        let containerView = transitionContext.containerView
+        let toView = transitionContext.view(forKey: .to)!
+        let fromView = transitionContext.view(forKey: .from)!
+        toView.clipsToBounds = true
+        fromView.clipsToBounds = true
+
+        
+        var forwards = true
+        
+        let fromViewController = transitionContext.viewController(forKey: .from)
+        let toViewController = transitionContext.viewController(forKey: .to)
+
+        
+        //cases transition should go backwards
+        if fromViewController is BadgesViewController ||
+            fromViewController is AboutPuppersViewController ||
+            (fromViewController is SettingsViewController && toViewController is GameStartPageViewController) {
+            forwards = false
+        }
+        
+        if forwards {
+            containerView.addSubview(fromView)
+            containerView.addSubview(toView)
+            toView.frame.origin.x = fromView.frame.size.width * 1.01
+            UIView.animate(withDuration: GamePlayParameters.TransitionTiming.gameTransitionTime, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0,
+                           animations: {
+                            toView.frame.origin.x = 0
+            },
+                           completion: { _ in
+                            transitionContext.completeTransition(true)
+            })
+        } else {
+            containerView.addSubview(toView)
+            containerView.addSubview(fromView)
+            UIView.animate(withDuration: GamePlayParameters.TransitionTiming.gameTransitionTime, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0,
+                           animations: {
+                            fromView.frame.origin.x = fromView.frame.size.width * 1.01
+            },
+                           completion: { _ in
+                            transitionContext.completeTransition(true)
+            })
+        }
+
+    }
 }

@@ -11,7 +11,7 @@ import AVFoundation
 
 //TODO: add high score congrats
 
-class PupperSplashViewController: UIViewController {
+class PupperSplashViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
     //MARK: - Properties
     
@@ -105,6 +105,7 @@ class PupperSplashViewController: UIViewController {
         passToViewController = "gameViewControllerID"
         let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: passToViewController) as! GameViewController
         nextViewController.gameSession = gameSession
+        nextViewController.transitioningDelegate = self;
         self.present(nextViewController, animated: true, completion: nil)
         
     }
@@ -172,6 +173,16 @@ class PupperSplashViewController: UIViewController {
         }
         
         return false
+    }
+    
+    //MARK: - UIViewControllerTransitioningDelegate methods
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return gameSession
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return nil
     }
 
     

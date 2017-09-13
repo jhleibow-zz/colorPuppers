@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AboutPuppersViewController: UIViewController {
+class AboutPuppersViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
     
     //MARK: - Properties
@@ -120,11 +120,13 @@ class AboutPuppersViewController: UIViewController {
             let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: sendingViewControllerName) as! SettingsViewController
             nextViewController.gameSession = gameSession
+            nextViewController.transitioningDelegate = self;
             self.present(nextViewController, animated: true, completion: nil)
         } else {
             let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: sendingViewControllerName) as! GameStartPageViewController
             nextViewController.gameSession = gameSession
+            nextViewController.transitioningDelegate = self;
             self.present(nextViewController, animated: true, completion: nil)
         }
         
@@ -148,6 +150,16 @@ class AboutPuppersViewController: UIViewController {
         image1.image = UIImage(named: image1Name)
         image2.image = UIImage(named: image2Name)
         image3.image = UIImage(named: image3Name)
+    }
+    
+    //MARK: - UIViewControllerTransitioningDelegate methods
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return gameSession
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return nil
     }
     
 

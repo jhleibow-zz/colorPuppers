@@ -60,9 +60,9 @@ class GameColor {
         let green: CGFloat = 115.0/255.0 //0.37
         let blue: CGFloat = 111.0/255.0 //0.32
 
-        let fontRed: CGFloat = 201.0/255.0 //0.89
-        let fontGreen: CGFloat = 48.0/255.0 //0.29
-        let fontBlue: CGFloat = 55.0/255.0 //0.25
+        let fontRed: CGFloat = 205.0/255.0 //0.89
+        let fontGreen: CGFloat = 54.0/255.0 //0.29
+        let fontBlue: CGFloat = 53.0/255.0 //0.25
         
         let alpha: CGFloat = 1
         let name: String = "red"
@@ -141,13 +141,13 @@ class GameColor {
 
     //Brown
     class var brown: GameColor {
-        let red: CGFloat = 227.0/255.0 //0.83
-        let green: CGFloat = 200.0/255.0 //0.71
-        let blue: CGFloat = 176.0/255.0 //0.52
+        let red: CGFloat = 207.0/255.0 //0.83
+        let green: CGFloat = 182.0/255.0 //0.71
+        let blue: CGFloat = 149.0/255.0 //0.52
         
-        let fontRed: CGFloat = 191.0/255.0 //0.75
-        let fontGreen: CGFloat = 144.0/255.0 //0.55
-        let fontBlue: CGFloat = 106.0/255.0 //0.35
+        let fontRed: CGFloat = 177.0/255.0 //0.75
+        let fontGreen: CGFloat = 132.0/255.0 //0.55
+        let fontBlue: CGFloat = 96.0/255.0 //0.35
         
         let alpha: CGFloat = 1
         let name: String = "brown"

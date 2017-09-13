@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameStartPageViewController: UIViewController {
+class GameStartPageViewController: UIViewController, UIViewControllerTransitioningDelegate, GameSessionAnimationDelegate {
 
     
     //MARK: - Properties
@@ -76,6 +76,9 @@ class GameStartPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        gameSession.animationDelegate = self
+        
+        createDropShadow()
         stopAnimations()
         colorMenuButtons()
         resizeText()
@@ -126,6 +129,7 @@ class GameStartPageViewController: UIViewController {
         let gameViewController = myStoryBoard.instantiateViewController(withIdentifier: "gameViewControllerID") as! GameViewController
         gameSession.startNewGame(difficulty: difficulty)
         gameViewController.gameSession = gameSession
+        gameViewController.transitioningDelegate = self;
         self.present(gameViewController, animated: true, completion: nil)
     }
     
@@ -134,6 +138,7 @@ class GameStartPageViewController: UIViewController {
         let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: "settingsViewControllerID") as! SettingsViewController
         nextViewController.gameSession = gameSession
+        nextViewController.transitioningDelegate = self;
         self.present(nextViewController, animated: true, completion: nil)
     }
     
@@ -143,6 +148,7 @@ class GameStartPageViewController: UIViewController {
         let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: "badgesViewControllerID") as! BadgesViewController
         nextViewController.gameSession = gameSession
         nextViewController.sendingViewControllerName = "gameStartPageViewControllerID"
+        nextViewController.transitioningDelegate = self;
         self.present(nextViewController, animated: true, completion: nil)
     }
     
@@ -153,6 +159,7 @@ class GameStartPageViewController: UIViewController {
         let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: "pupperInfoPageViewControllerID") as! AboutPuppersViewController
         nextViewController.gameSession = gameSession
         nextViewController.sendingViewControllerName = "gameStartPageViewControllerID"
+        nextViewController.transitioningDelegate = self;
         self.present(nextViewController, animated: true, completion: nil)
     }
     
@@ -206,6 +213,31 @@ class GameStartPageViewController: UIViewController {
         mediumHighScoreLabel.text = String(gameSession!.highScoresAndSettings!.getMediumHighScore())
         hardHighScoreLabel.text = String(gameSession!.highScoresAndSettings!.getHardHighScore())
         
+    }
+    //MARK: - GameSessionAnimationDelegate method
+    
+    func focusReturnedStartAnimationAgain() {
+        stopAnimations()
+        animateBadge(radians: CGFloat.pi/48, counter: 0, delay: 0.0)
+    }
+
+    
+    //MARK: - UIViewControllerTransitioningDelegate methods
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return gameSession
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return nil
+    }
+    
+    private func createDropShadow() {
+        badgeButton.layer.shadowColor = UIColor.black.cgColor
+        badgeButton.layer.shadowOpacity = 1
+        badgeButton.layer.shadowOffset = CGSize.init(width: badgeButton.frame.size.width * 0.025, height: badgeButton.frame.size.width * 0.05)
+        badgeButton.layer.shadowRadius = badgeButton.frame.size.width / 10
+
     }
 
 }

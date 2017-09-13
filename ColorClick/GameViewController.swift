@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, UIViewControllerTransitioningDelegate {
 
     
     //MARK: - Properties
@@ -194,16 +194,28 @@ class GameViewController: UIViewController {
         if correct! {
             let reactionViewController: PupperSplashViewController = myStoryBoard.instantiateViewController(withIdentifier: "PupperSplashViewControllerID") as! PupperSplashViewController
             reactionViewController.gameSession = gameSession
+            reactionViewController.transitioningDelegate = self;
             self.present(reactionViewController, animated: true, completion: nil)
         } else {
             let reactionViewController: GameOverViewController = myStoryBoard.instantiateViewController(withIdentifier: "GameOverViewControllerID") as! GameOverViewController
             reactionViewController.gameSession = gameSession
+            reactionViewController.transitioningDelegate = self;
             self.present(reactionViewController, animated: true, completion: nil)
         }
         
 
         
 
+    }
+    
+    //MARK: - UIViewControllerTransitioningDelegate methods
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return gameSession
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return nil
     }
     
 

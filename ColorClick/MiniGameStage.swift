@@ -35,7 +35,6 @@ class MiniGameStage {
     var descriptionConfusingColor = false
     
     var fillerAddObjects = false
-    var fillerAddObjectColors = false
     var fillerAddWords = false
     var fillerAddFontColors = false
     
@@ -147,7 +146,6 @@ class MiniGameStage {
         self.fontColorEqualsWord = false
         
         self.fillerAddObjects = false
-        self.fillerAddObjectColors = false
         self.fillerAddWords = false
         self.fillerAddFontColors = false
         
@@ -174,16 +172,16 @@ class MiniGameStage {
         
         switch stageType {
             
-        case 0:
+        case 0, 10:
             hasBackground = true
             usesNumberOfFillerSlots = 0
-        case 1:
+        case 1, 11:
             hasObject = true
             usesNumberOfFillerSlots = 1
-        case 2:
+        case 2, 12:
             hasWord = true
             usesNumberOfFillerSlots = 1
-        case 3:
+        case 3, 13:
             hasObjectColor = true
             usesNumberOfFillerSlots = 1
         case 4:
@@ -201,7 +199,7 @@ class MiniGameStage {
         case 8:
             notHaveFontColor = true
             usesNumberOfFillerSlots = 2
-        case 9:
+        case 9, 14:
             hasFontColor = true
             usesNumberOfFillerSlots = 2
         default:
@@ -356,6 +354,18 @@ class MiniGameStage {
     }
     
 }
+
+// hasFontColor = true
+
+// fontColorEqualsBackground = true
+// objectEqualsWord = true
+
+// wordEqualsBackground = false
+// objectEqualsBackground = false
+// objectEqualsFontColor = false
+// fontColorEqualsWord = false
+
+
 
 // old stuff probably never use
 //        var descriptionText: NSAttributedString?

@@ -8,10 +8,11 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UIViewControllerTransitioningDelegate, GameSessionAnimationDelegate {
 
     
     //MARK: - Properties
+    
     
     @IBOutlet weak var goBackButton: UIButton!
     @IBOutlet weak var pupperInfoButton: UIButton!
@@ -71,6 +72,10 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         //colorSettingsButtons()
+        
+        gameSession.animationDelegate = self
+        
+        createDropShadow()
         resizeText()
         updateSoundOnText()
         updateMusicOnText()
@@ -116,7 +121,10 @@ class SettingsViewController: UIViewController {
         let passToViewController = "gameStartPageViewControllerID"
         let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: passToViewController) as! GameStartPageViewController
         nextViewController.gameSession = gameSession
+        nextViewController.transitioningDelegate = self;
         self.present(nextViewController, animated: true, completion: nil)
+        
+        
     }
     
     //navigate to badges page
@@ -125,6 +133,7 @@ class SettingsViewController: UIViewController {
         let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: "badgesViewControllerID") as! BadgesViewController
         nextViewController.gameSession = gameSession
         nextViewController.sendingViewControllerName = "settingsViewControllerID"
+        nextViewController.transitioningDelegate = self;
         self.present(nextViewController, animated: true, completion: nil)
     }
     
@@ -134,6 +143,7 @@ class SettingsViewController: UIViewController {
         let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: "pupperInfoPageViewControllerID") as! AboutPuppersViewController
         nextViewController.gameSession = gameSession
         nextViewController.sendingViewControllerName = "settingsViewControllerID"
+        nextViewController.transitioningDelegate = self;
         self.present(nextViewController, animated: true, completion: nil)
     }
     
@@ -226,6 +236,14 @@ class SettingsViewController: UIViewController {
         } )
     }
     
+    private func createDropShadow() {
+        badgeButton.layer.shadowColor = UIColor.black.cgColor
+        badgeButton.layer.shadowOpacity = 1
+        badgeButton.layer.shadowOffset = CGSize.init(width: badgeButton.frame.size.width * 0.025, height: badgeButton.frame.size.width * 0.05)
+        badgeButton.layer.shadowRadius = badgeButton.frame.size.width / 10
+        
+    }
+    
     private func stopAnimations() {
         //self.badgeButton.layer.removeAllAnimations()
         view.layer.removeAllAnimations()
@@ -240,4 +258,24 @@ class SettingsViewController: UIViewController {
         
     }
     
+    //MARK: - GameSessionAnimationDelegate method
+    
+    func focusReturnedStartAnimationAgain() {
+        stopAnimations()
+        animateBadge(radians: CGFloat.pi/48, counter: 0, delay: 0.0)
+    }
+    
+    //MARK: - UIViewControllerTransitioningDelegate methods
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return gameSession
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return nil
+    }
+    
+    
 }
+
+

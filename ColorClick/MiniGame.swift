@@ -222,14 +222,14 @@ class MiniGame {
         
         var justAColoredSquare = false
         //if its just a colored square
-        if miniGameStage.hasBackground && !miniGameStage.fillerAddFontColors && !miniGameStage.fillerAddWords && !miniGameStage.fillerAddObjects && !miniGameStage.fillerAddObjectColors {
+        if miniGameStage.hasBackground && !miniGameStage.fillerAddFontColors && !miniGameStage.fillerAddWords && !miniGameStage.fillerAddObjects {
             justAColoredSquare = true
             beginning = NSAttributedString(string: "Tap ")
         }
 
         var justAColoredSquareNot = false
         //if its just a colored square
-        if miniGameStage.notHaveBackground && !miniGameStage.fillerAddFontColors && !miniGameStage.fillerAddWords && !miniGameStage.fillerAddObjects && !miniGameStage.fillerAddObjectColors {
+        if miniGameStage.notHaveBackground && !miniGameStage.fillerAddFontColors && !miniGameStage.fillerAddWords && !miniGameStage.fillerAddObjects {
             justAColoredSquareNot = true
             beginning = NSAttributedString(string: "Tap square that is not ")
         }
@@ -291,7 +291,7 @@ class MiniGame {
         updateAnswerWordFontOrObject()
         
         //update square objects if required
-        if miniGameStage.hasObject || miniGameStage.notHaveObject || miniGameStage.hasObjectColor || miniGameStage.notHaveObjectColor || miniGameStage.fillerAddObjects || miniGameStage.fillerAddObjectColors && !objectUpdated {
+        if miniGameStage.hasObject || miniGameStage.notHaveObject || miniGameStage.hasObjectColor || miniGameStage.notHaveObjectColor || miniGameStage.fillerAddObjects && !objectUpdated {
             updateSquareObjects()
         }
         
@@ -336,7 +336,9 @@ class MiniGame {
     
     private func updateSquareObjects() {
         
+        objectUpdated = true
         //set object for right answer
+
         if miniGameStage.chosenObject != nil {
             squareCollection[answerIndex!].squareObject = miniGameStage.chosenObject!
         } else if miniGameStage.objectEqualsWord && wordUpdated {
@@ -366,10 +368,12 @@ class MiniGame {
             }
         }
         
-        objectUpdated = true
+        
     }
     
     private func updateSquareWords() {
+        
+        wordUpdated = true
         
         //set word for right answer
         if miniGameStage.chosenWord != nil {
@@ -401,10 +405,12 @@ class MiniGame {
             }
         }
         
-        wordUpdated = true
+        
     }
     
     private func updateSquareFontColors() {
+        
+        fontColorUpdated = true
         
         //set font for right answer
         if miniGameStage.chosenFontColor != nil {
@@ -436,12 +442,14 @@ class MiniGame {
             }
         }
         
-        fontColorUpdated = true
+        
     }
     
 
     
     private func updateSquareBackgrounds() {
+        
+        backgroundUpdated = true
         
         //set background for right answer
         if miniGameStage.chosenBackgroundColor != nil {
@@ -473,7 +481,7 @@ class MiniGame {
             }
         }
         
-        backgroundUpdated = true
+        
     }
     
     private func makeBackgroundsMatchObjectNaturalColors() {

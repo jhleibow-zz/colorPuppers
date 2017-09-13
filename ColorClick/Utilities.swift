@@ -88,7 +88,7 @@ class Utilities {
         
         let labelHeight = label.frame.height * (1 - GamePlayParameters.Margins.marginRatioToSide)
         let labelWidth = label.frame.width
-        var fontSize = label.frame.width/CGFloat(GamePlayParameters.Fonts.squareSideSizeRatioToFontSize) + 20
+        var fontSize = label.frame.width/CGFloat(GamePlayParameters.Fonts.squareSideSizeRatioToFontSize) + 60
         var currentSizeBox: CGRect
         
         repeat {
