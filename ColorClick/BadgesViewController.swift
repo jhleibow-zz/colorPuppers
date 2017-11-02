@@ -15,6 +15,10 @@ class BadgesViewController: UIViewController, UIViewControllerTransitioningDeleg
 
     @IBOutlet weak var badgesLabel: UILabel!
     
+    @IBOutlet weak var badgeEasyLabel: UILabel!
+    @IBOutlet weak var badgeMediumLabel: UILabel!
+    @IBOutlet weak var badgeHardLabel: UILabel!
+    
     @IBOutlet weak var badgeeasy1: UIImageView!
     @IBOutlet weak var badgemedium1: UIImageView!
     @IBOutlet weak var badgehard1: UIImageView!
@@ -54,6 +58,12 @@ class BadgesViewController: UIViewController, UIViewControllerTransitioningDeleg
 
         loadBadges()
         Utilities.updateLabelFontAttributed(label: badgesLabel, fontName: GamePlayParameters.Fonts.gameFontName, alignment: .center, characterSpacing: 5.0, scaleDownFromHeightFactor: 2.7)
+        
+        Utilities.updateLabelFontAttributed(label: badgeEasyLabel, fontName: GamePlayParameters.Fonts.gameFontName, alignment: .center, characterSpacing: 3.0, scaleDownFromHeightFactor: 4.1)
+
+        Utilities.updateLabelFontAttributed(label: badgeMediumLabel, fontName: GamePlayParameters.Fonts.gameFontName, alignment: .center, characterSpacing: 3.0, scaleDownFromHeightFactor: 4.1)
+        
+        Utilities.updateLabelFontAttributed(label: badgeHardLabel, fontName: GamePlayParameters.Fonts.gameFontName, alignment: .center, characterSpacing: 3.0, scaleDownFromHeightFactor: 4.1)
         // Do any additional setup after loading the view.
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(goBack));

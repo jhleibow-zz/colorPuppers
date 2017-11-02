@@ -119,6 +119,9 @@ class GameViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         //Label text to display current level
         currentLevelLabel.text = "Level \(gameSession.getCurrentLevel())"
+        
+        Utilities.updateLabelFontAttributed(label: currentLevelLabel, fontName: GamePlayParameters.Fonts.gameFontName, alignment: .center,scaleDownFromHeightFactor: 1.7)
+        
     }
     
     //user chose correct answer

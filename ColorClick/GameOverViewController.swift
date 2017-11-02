@@ -194,19 +194,19 @@ class GameOverViewController: UIViewController, GameSessionAdDelegate, UIViewCon
     
     private func createDropShadow() {
         gameOverFrame.layer.shadowColor = UIColor.gray.cgColor
-        gameOverFrame.layer.shadowOpacity = 0.9
-        gameOverFrame.layer.shadowOffset = CGSize.init(width: gameOverFrame.frame.size.width * 0.025, height: gameOverFrame.frame.size.width * 0.05)
-        gameOverFrame.layer.shadowRadius = gameOverFrame.frame.size.width / 15
+        gameOverFrame.layer.shadowOpacity = 0.79
+        gameOverFrame.layer.shadowOffset = CGSize.init(width: gameOverFrame.frame.size.width * 0.015, height: gameOverFrame.frame.size.width * 0.025)
+        gameOverFrame.layer.shadowRadius = gameOverFrame.frame.size.width / 25
         
         continueFrame.layer.shadowColor = UIColor.gray.cgColor
-        continueFrame.layer.shadowOpacity = 0.9
-        continueFrame.layer.shadowOffset = CGSize.init(width: continueFrame.frame.size.width * 0.025, height: continueFrame.frame.size.width * 0.05)
-        continueFrame.layer.shadowRadius = gameOverFrame.frame.size.width / 15
+        continueFrame.layer.shadowOpacity = 0.79
+        continueFrame.layer.shadowOffset = CGSize.init(width: continueFrame.frame.size.width * 0.015, height: continueFrame.frame.size.width * 0.025)
+        continueFrame.layer.shadowRadius = gameOverFrame.frame.size.width / 25
         
         gameOverNoAdFrame.layer.shadowColor = UIColor.gray.cgColor
-        gameOverNoAdFrame.layer.shadowOpacity = 0.9
-        gameOverNoAdFrame.layer.shadowOffset = CGSize.init(width: gameOverNoAdFrame.frame.size.width * 0.025, height: gameOverNoAdFrame.frame.size.width * 0.05)
-        gameOverNoAdFrame.layer.shadowRadius = gameOverFrame.frame.size.width / 15
+        gameOverNoAdFrame.layer.shadowOpacity = 0.79
+        gameOverNoAdFrame.layer.shadowOffset = CGSize.init(width: gameOverNoAdFrame.frame.size.width * 0.015, height: gameOverNoAdFrame.frame.size.width * 0.025)
+        gameOverNoAdFrame.layer.shadowRadius = gameOverFrame.frame.size.width / 25
         
     }
     
