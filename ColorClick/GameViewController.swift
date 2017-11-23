@@ -106,7 +106,7 @@ class GameViewController: UIViewController, UIViewControllerTransitioningDelegat
         
         repeat {
             let gameFont = UIFont(name: GamePlayParameters.Fonts.gameFontName, size: fontSize)
-            gameSession.miniGame.instructions!.addAttribute(NSFontAttributeName, value: gameFont!, range: NSRange(location: 0, length: gameSession.miniGame.instructions!.length))
+            gameSession.miniGame.instructions!.addAttribute(NSAttributedStringKey.font, value: gameFont!, range: NSRange(location: 0, length: gameSession.miniGame.instructions!.length))
             let constrainedWidth = CGSize(width: labelWidth * (1 - GamePlayParameters.Margins.marginRatioToSide), height: CGFloat.greatestFiniteMagnitude)
             currentSizeBox = gameSession.miniGame.instructions!.boundingRect(with: constrainedWidth, options: .usesLineFragmentOrigin, context: nil)
             fontSize -= 2.0

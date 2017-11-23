@@ -249,17 +249,17 @@ class MiniGame {
         
         
         if justAColoredSquareNot {
-            middle = NSAttributedString(string: colorDescriptor1, attributes: [NSForegroundColorAttributeName: tempGameColor.fontColor])
+            middle = NSAttributedString(string: colorDescriptor1, attributes: [NSAttributedStringKey.foregroundColor: tempGameColor.fontColor])
             end = NSAttributedString(string: "")
         } else if justAColoredSquare {
-            middle = NSAttributedString(string: colorDescriptor1, attributes: [NSForegroundColorAttributeName: tempGameColor.fontColor])
+            middle = NSAttributedString(string: colorDescriptor1, attributes: [NSAttributedStringKey.foregroundColor: tempGameColor.fontColor])
             end = NSAttributedString(string: " square")
         } else if colorDescriptor1 != "" {
-            middle = NSAttributedString(string: colorDescriptor1, attributes: [NSForegroundColorAttributeName: tempGameColor.fontColor])
+            middle = NSAttributedString(string: colorDescriptor1, attributes: [NSAttributedStringKey.foregroundColor: tempGameColor.fontColor])
             end = NSAttributedString(string: subjectString1)
         } else {
             middle = NSAttributedString(string: colorDescriptor1)
-            end = NSAttributedString(string: subjectString1, attributes: [NSForegroundColorAttributeName: tempGameColor.fontColor])
+            end = NSAttributedString(string: subjectString1, attributes: [NSAttributedStringKey.foregroundColor: tempGameColor.fontColor])
         }
         
 
@@ -278,7 +278,7 @@ class MiniGame {
         myParagraphStyle.alignment = .center
         //myParagraphStyle.lineBreakMode = .byWordWrapping
         
-        final.addAttribute(NSParagraphStyleAttributeName, value: myParagraphStyle, range: NSRange(location: 0, length: final.length))
+        final.addAttribute(NSAttributedStringKey.paragraphStyle, value: myParagraphStyle, range: NSRange(location: 0, length: final.length))
         
         self.instructions = final
     }

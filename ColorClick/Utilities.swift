@@ -48,8 +48,8 @@ class Utilities {
             button.titleLabel!.font = gameFont!
             let constrainedWidth = CGSize(width: buttonWidth * (1 - GamePlayParameters.Margins.marginRatioToSide), height: CGFloat.greatestFiniteMagnitude)
             let testString = NSMutableAttributedString(string: button.titleLabel!.text!)
-            testString.addAttribute(NSParagraphStyleAttributeName, value: myParagraphStyle, range: NSRange(location: 0, length: testString.length))
-            testString.addAttribute(NSFontAttributeName, value: gameFont!, range: NSRange(location: 0, length: testString.length))
+            testString.addAttribute(NSAttributedStringKey.paragraphStyle, value: myParagraphStyle, range: NSRange(location: 0, length: testString.length))
+            testString.addAttribute(NSAttributedStringKey.font, value: gameFont!, range: NSRange(location: 0, length: testString.length))
             currentSizeBox = testString.boundingRect(with: constrainedWidth, options: .usesLineFragmentOrigin, context: nil)
             
             //check width is ok
@@ -57,8 +57,8 @@ class Utilities {
             widestWord = 0.0
             for word in wordArray {
                 let testString = NSMutableAttributedString(string: word)
-                testString.addAttribute(NSParagraphStyleAttributeName, value: myParagraphStyle, range: NSRange(location: 0, length: testString.length))
-                testString.addAttribute(NSFontAttributeName, value: gameFont!, range: NSRange(location: 0, length: testString.length))
+                testString.addAttribute(NSAttributedStringKey.paragraphStyle, value: myParagraphStyle, range: NSRange(location: 0, length: testString.length))
+                testString.addAttribute(NSAttributedStringKey.font, value: gameFont!, range: NSRange(location: 0, length: testString.length))
                 currentSizeBox = testString.boundingRect(with: CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude) , options: .usesLineFragmentOrigin, context: nil)
                 let currentWidth = currentSizeBox.width
                 if currentWidth > widestWord {
@@ -97,8 +97,8 @@ class Utilities {
             label.font = gameFont!
             let constrainedWidth = CGSize(width: labelWidth * (1 - GamePlayParameters.Margins.marginRatioToSide), height: CGFloat.greatestFiniteMagnitude)
             let testString = NSMutableAttributedString(string: label.text!)
-            testString.addAttribute(NSParagraphStyleAttributeName, value: myParagraphStyle, range: NSRange(location: 0, length: testString.length))
-            testString.addAttribute(NSFontAttributeName, value: gameFont!, range: NSRange(location: 0, length: testString.length))
+            testString.addAttribute(NSAttributedStringKey.paragraphStyle, value: myParagraphStyle, range: NSRange(location: 0, length: testString.length))
+            testString.addAttribute(NSAttributedStringKey.font, value: gameFont!, range: NSRange(location: 0, length: testString.length))
             currentSizeBox = testString.boundingRect(with: constrainedWidth, options: .usesLineFragmentOrigin, context: nil)
             
         
@@ -133,9 +133,9 @@ class Utilities {
 
             let constrainedWidth = CGSize(width: labelWidth * (1 - GamePlayParameters.Margins.marginRatioToSide), height: CGFloat.greatestFiniteMagnitude)
             let testString = NSMutableAttributedString(string: label.text!)
-            testString.addAttribute(NSParagraphStyleAttributeName, value: myParagraphStyle, range: NSRange(location: 0, length: testString.length))
-            testString.addAttribute(NSKernAttributeName, value: characterSpacing, range: NSRange(location: 0, length: testString.length))
-            testString.addAttribute(NSFontAttributeName, value: gameFont!, range: NSRange(location: 0, length: testString.length))
+            testString.addAttribute(NSAttributedStringKey.paragraphStyle, value: myParagraphStyle, range: NSRange(location: 0, length: testString.length))
+            testString.addAttribute(NSAttributedStringKey.kern, value: characterSpacing, range: NSRange(location: 0, length: testString.length))
+            testString.addAttribute(NSAttributedStringKey.font, value: gameFont!, range: NSRange(location: 0, length: testString.length))
             currentSizeBox = testString.boundingRect(with: constrainedWidth, options: .usesLineFragmentOrigin, context: nil)
             
             label.attributedText = testString

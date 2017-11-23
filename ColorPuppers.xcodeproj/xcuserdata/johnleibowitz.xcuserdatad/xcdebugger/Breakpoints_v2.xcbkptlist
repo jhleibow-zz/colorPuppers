@@ -58,42 +58,42 @@
                   moduleName = "ColorPuppers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/johnleibowitz/Documents/iOS%20dev/ColorPuppers/ColorClick/HighScoresAndSettings.swift"
-                  timestampString = "531217602.814539"
+                  timestampString = "533103106.375555"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ColorPuppers.HighScoresAndSettings.init () -&gt; ColorPuppers.HighScoresAndSettings"
+                  symbolName = "ColorPuppers.HighScoresAndSettings.__allocating_init() -&gt; ColorPuppers.HighScoresAndSettings"
                   moduleName = "ColorPuppers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/johnleibowitz/Documents/iOS%20dev/ColorPuppers/ColorClick/HighScoresAndSettings.swift"
-                  timestampString = "531217602.816962"
+                  timestampString = "533103106.377184"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
                   offsetFromSymbolStart = "12">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ColorPuppers.HighScoresAndSettings.__allocating_init () -&gt; ColorPuppers.HighScoresAndSettings"
+                  symbolName = "ColorPuppers.HighScoresAndSettings.init() -&gt; ColorPuppers.HighScoresAndSettings"
                   moduleName = "ColorPuppers"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/johnleibowitz/Documents/iOS%20dev/ColorPuppers/ColorClick/HighScoresAndSettings.swift"
-                  timestampString = "531217602.819658"
+                  timestampString = "533103106.378582"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "4">
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "12">
                </Location>
             </Locations>
          </BreakpointContent>

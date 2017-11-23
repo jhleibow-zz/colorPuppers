@@ -93,6 +93,12 @@
       "idiom" : "ipad",
       "filename" : "croppedHappyDoggo 167.png",
       "scale" : "2x"
+    },
+    {
+      "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "croppedHappyDoggo 1024.png",
+      "scale" : "1x"
     }
   ],
   "info" : {
