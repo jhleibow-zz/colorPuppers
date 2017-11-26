@@ -21,6 +21,7 @@
 		148A5F711EE4D938001C20A5 /* GameColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148A5F701EE4D938001C20A5 /* GameColor.swift */; };
 		148A5F731EE558C4001C20A5 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148A5F721EE558C4001C20A5 /* GameOverViewController.swift */; };
 		148A5F751EE75A3D001C20A5 /* GameStartPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 148A5F741EE75A3D001C20A5 /* GameStartPageViewController.swift */; };
+		14BD5C601FCA3504002789F6 /* InstantPanGestureRecoginzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14BD5C5F1FCA3504002789F6 /* InstantPanGestureRecoginzer.swift */; };
 		14CD7AF11EDCED03001AB42C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD7AF01EDCED03001AB42C /* AppDelegate.swift */; };
 		14CD7AF31EDCED03001AB42C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14CD7AF21EDCED03001AB42C /* GameViewController.swift */; };
 		14CD7AF61EDCED03001AB42C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 14CD7AF41EDCED03001AB42C /* Main.storyboard */; };
@@ -65,6 +66,7 @@
 		148A5F701EE4D938001C20A5 /* GameColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameColor.swift; sourceTree = "<group>"; };
 		148A5F721EE558C4001C20A5 /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		148A5F741EE75A3D001C20A5 /* GameStartPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameStartPageViewController.swift; sourceTree = "<group>"; };
+		14BD5C5F1FCA3504002789F6 /* InstantPanGestureRecoginzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstantPanGestureRecoginzer.swift; sourceTree = "<group>"; };
 		14CD7AED1EDCED03001AB42C /* ColorPuppers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorPuppers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14CD7AF01EDCED03001AB42C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14CD7AF21EDCED03001AB42C /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 				14CD7AF71EDCED03001AB42C /* Assets.xcassets */,
 				14CD7AF91EDCED03001AB42C /* LaunchScreen.storyboard */,
 				14CD7AFC1EDCED03001AB42C /* Info.plist */,
+				14BD5C5F1FCA3504002789F6 /* InstantPanGestureRecoginzer.swift */,
 			);
 			name = ColorPuppers;
 			path = ColorClick;
@@ -436,6 +439,7 @@
 				148A5F6F1EE20F0E001C20A5 /* GameColorsAndObjects.swift in Sources */,
 				14CD7AF11EDCED03001AB42C /* AppDelegate.swift in Sources */,
 				14046B741F39106900D32FA8 /* BadgesViewController.swift in Sources */,
+				14BD5C601FCA3504002789F6 /* InstantPanGestureRecoginzer.swift in Sources */,
 				14D16F0E1EEA119F00AC63F1 /* SettingsViewController.swift in Sources */,
 				141CA14B1F1573EB00E7DA52 /* AboutPuppersViewController.swift in Sources */,
 			);

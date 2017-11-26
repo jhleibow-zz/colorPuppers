@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AboutPuppersViewController: UIViewController, UIViewControllerTransitioningDelegate {
+class AboutPuppersViewController: UIViewController, UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate {
 
     
     //MARK: - Properties
@@ -23,13 +23,15 @@ class AboutPuppersViewController: UIViewController, UIViewControllerTransitionin
     @IBOutlet weak var humaneWebsiteLabel: UILabel!
     @IBOutlet weak var homeForGoodButton: UIButton!
     @IBOutlet weak var seattleHumaneButton: UIButton!
-    @IBOutlet weak var goBackButton: UIButton!
+//    @IBOutlet weak var goBackButton: UIButton!
     
     
     @IBOutlet weak var image1: UIImageView!
     @IBOutlet weak var image2: UIImageView!
     @IBOutlet weak var image3: UIImageView!
 
+    var percentInteractionController: UIPercentDrivenInteractiveTransition?
+    
     @IBAction func homeForGoodButtonTap(_ sender: UIButton) {
         if let url = URL(string: "https://homeforgooddogs.org/") {
             UIApplication.shared.open(url)
@@ -43,9 +45,9 @@ class AboutPuppersViewController: UIViewController, UIViewControllerTransitionin
         }
     }
     
-    @IBAction func tapGoBackButton(_ sender: UIButton) {
-        goBack()
-    }
+//    @IBAction func tapGoBackButton(_ sender: UIButton) {
+//        goBack()
+//    }
     
     
     //Object that is passed around all view controllers that contains current game state
@@ -65,15 +67,20 @@ class AboutPuppersViewController: UIViewController, UIViewControllerTransitionin
         fixFontSizes()
         loadImages()
         
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(goBack));
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
-        view.addGestureRecognizer(swipeLeft);
+//        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(goBack));
+//        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+//        view.addGestureRecognizer(swipeLeft);
+//
+//        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(goBack));
+//        swipeLeft.direction = UISwipeGestureRecognizerDirection.right
         
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(goBack));
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.right
-        
-        view.addGestureRecognizer(swipeRight);
+//        view.addGestureRecognizer(swipeRight);
         // Do any additional setup after loading the view.
+        
+        let panRight = UIPanGestureRecognizer(target: self, action: #selector(panGesture(_ :)))
+        panRight.delegate = self
+        view.addGestureRecognizer(panRight)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -112,7 +119,74 @@ class AboutPuppersViewController: UIViewController, UIViewControllerTransitionin
      
         
     }
-    
+    @objc func panGesture(_ gesture: UIPanGestureRecognizer) {
+        
+        
+        
+        if sendingViewControllerName == "settingsViewControllerID" {
+            
+            let translation = gesture.translation(in: gesture.view)
+            let percent = translation.x / gesture.view!.frame.size.width
+            
+            if gesture.state == .began {
+                
+                let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: sendingViewControllerName) as! SettingsViewController
+                nextViewController.gameSession = gameSession
+                
+                percentInteractionController = UIPercentDrivenInteractiveTransition()
+                nextViewController.percentInteractionController = percentInteractionController
+                
+                nextViewController.transitioningDelegate = self;
+                self.present(nextViewController, animated: true, completion: nil)
+            } else if gesture.state == .changed {
+                percentInteractionController!.update(percent)
+            } else if gesture.state == .ended || gesture.state == .cancelled {
+                let velocity = gesture.velocity(in: gesture.view)
+                
+                percentInteractionController?.completionSpeed = 0.99
+                if (percent > 0.5 && velocity.x == 0) || (velocity.x > 0) {
+                    percentInteractionController?.finish()
+                } else {
+                    
+                    percentInteractionController?.cancel()
+                }
+                percentInteractionController = nil
+            }
+            
+            
+            
+        } else {
+            let translation = gesture.translation(in: gesture.view)
+            let percent = translation.x / gesture.view!.frame.size.width
+            
+            if gesture.state == .began {
+                
+                let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: sendingViewControllerName) as! GameStartPageViewController
+                nextViewController.gameSession = gameSession
+                
+                percentInteractionController = UIPercentDrivenInteractiveTransition()
+                nextViewController.percentInteractionController = percentInteractionController
+                
+                nextViewController.transitioningDelegate = self;
+                self.present(nextViewController, animated: true, completion: nil)
+            } else if gesture.state == .changed {
+                percentInteractionController!.update(percent)
+            } else if gesture.state == .ended || gesture.state == .cancelled {
+                let velocity = gesture.velocity(in: gesture.view)
+                
+                percentInteractionController?.completionSpeed = 0.99
+                if (percent > 0.5 && velocity.x == 0) || (velocity.x > 0) {
+                    percentInteractionController?.finish()
+                } else {
+                    
+                    percentInteractionController?.cancel()
+                }
+                percentInteractionController = nil
+            }
+        }
+    }
     
     //navigate to prior page
     @objc func goBack() {
@@ -159,6 +233,14 @@ class AboutPuppersViewController: UIViewController, UIViewControllerTransitionin
     }
     
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return nil
+    }
+    
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return percentInteractionController
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
         return nil
     }
     

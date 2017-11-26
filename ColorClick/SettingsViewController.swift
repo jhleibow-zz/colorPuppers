@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController, UIViewControllerTransitioningDelegate, GameSessionAnimationDelegate {
+class SettingsViewController: UIViewController, UIViewControllerTransitioningDelegate, GameSessionAnimationDelegate, UIGestureRecognizerDelegate {
 
     
     //MARK: - Properties
@@ -35,11 +35,12 @@ class SettingsViewController: UIViewController, UIViewControllerTransitioningDel
     //Object that is passed around all view controllers that contains current game state
     var gameSession: GameSession!
     
+    var percentInteractionController: UIPercentDrivenInteractiveTransition?
+    
     //hides battery and other info...
     override var prefersStatusBarHidden: Bool {
         return true;
     }
-    
     
     //MARK: - Actions
     
@@ -80,6 +81,10 @@ class SettingsViewController: UIViewController, UIViewControllerTransitioningDel
         updateSoundOnText()
         updateMusicOnText()
         updateHighScoreLabel()
+        
+        let panRight = UIPanGestureRecognizer(target: self, action: #selector(panGesture(_ :)))
+        panRight.delegate = self
+        view.addGestureRecognizer(panRight)
     }
 
 
@@ -94,7 +99,6 @@ class SettingsViewController: UIViewController, UIViewControllerTransitioningDel
     //MARK: - Private Methods
     
     //TODO: make this method part of GameColors class since its also used in game start page
-    //randomly assigns colors to menu buttons
     private func colorSettingsButtons() {
         var alreadyUsedColors = [GameColor]()
         var tempColor = gameSession.gameColorsAndObjects.getRandomGameColor(butNot: alreadyUsedColors)
@@ -113,6 +117,37 @@ class SettingsViewController: UIViewController, UIViewControllerTransitioningDel
         tempColor = gameSession.gameColorsAndObjects.getRandomGameColor(butNot: alreadyUsedColors)
         pupperInfoButton.backgroundColor = tempColor.color
         
+    }
+    
+    @objc func panGesture(_ gesture: UIPanGestureRecognizer) {
+        let translation = gesture.translation(in: gesture.view)
+        let percent = translation.x / gesture.view!.frame.size.width
+        
+        if gesture.state == .began {
+            
+            let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: "gameStartPageViewControllerID") as! GameStartPageViewController
+            nextViewController.gameSession = gameSession
+            
+            percentInteractionController = UIPercentDrivenInteractiveTransition()
+            nextViewController.percentInteractionController = percentInteractionController
+            
+            nextViewController.transitioningDelegate = self;
+            self.present(nextViewController, animated: true, completion: nil)
+        } else if gesture.state == .changed {
+            percentInteractionController!.update(percent)
+        } else if gesture.state == .ended || gesture.state == .cancelled {
+            let velocity = gesture.velocity(in: gesture.view)
+            
+            percentInteractionController?.completionSpeed = 0.99
+            if (percent > 0.5 && velocity.x == 0) || (velocity.x > 0) {
+                percentInteractionController?.finish()
+            } else {
+                
+                percentInteractionController?.cancel()
+            }
+            percentInteractionController = nil
+        }
     }
     
     //go back to Start page view
@@ -274,6 +309,15 @@ class SettingsViewController: UIViewController, UIViewControllerTransitioningDel
     func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return nil
     }
+    
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return percentInteractionController
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return nil
+    }
+    
     
     
 }

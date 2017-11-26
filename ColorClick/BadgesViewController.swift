@@ -8,10 +8,10 @@
 
 import UIKit
 
-class BadgesViewController: UIViewController, UIViewControllerTransitioningDelegate {
+class BadgesViewController: UIViewController, UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate {
 
     
-    @IBOutlet weak var transparentGoBackButton: UIButton!
+//    @IBOutlet weak var transparentGoBackButton: UIButton!
 
     @IBOutlet weak var badgesLabel: UILabel!
     
@@ -35,11 +35,11 @@ class BadgesViewController: UIViewController, UIViewControllerTransitioningDeleg
     @IBOutlet weak var badgemedium4: UIImageView!
     @IBOutlet weak var badgehard4: UIImageView!
     
-    @IBAction func transparentGoBackButtonTap(_ sender: UIButton) {
-        goBack()
-    }
+//    @IBAction func transparentGoBackButtonTap(_ sender: UIButton) {
+//        goBack()
+//    }
     
-    
+    var percentInteractionController: UIPercentDrivenInteractiveTransition?
     
     
     //Object that is passed around all view controllers that contains current game state
@@ -66,14 +66,18 @@ class BadgesViewController: UIViewController, UIViewControllerTransitioningDeleg
         Utilities.updateLabelFontAttributed(label: badgeHardLabel, fontName: GamePlayParameters.Fonts.gameFontName, alignment: .center, characterSpacing: 3.0, scaleDownFromHeightFactor: 4.1)
         // Do any additional setup after loading the view.
         
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(goBack));
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
-        view.addGestureRecognizer(swipeLeft);
+//        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(goBack));
+//        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+//        view.addGestureRecognizer(swipeLeft);
+//
+//        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(goBack));
+//        swipeLeft.direction = UISwipeGestureRecognizerDirection.right
+//        view.addGestureRecognizer(swipeRight);
         
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(goBack));
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.right
+        let panRight = InstantPanGestureRecoginzer(target: self, action: #selector(panGesture(_ :)))
+        panRight.delegate = self
+        view.addGestureRecognizer(panRight)
         
-        view.addGestureRecognizer(swipeRight);
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,6 +85,75 @@ class BadgesViewController: UIViewController, UIViewControllerTransitioningDeleg
         // Dispose of any resources that can be recreated.
     }
     
+    //deal with pan gesture
+    @objc func panGesture(_ gesture: UIPanGestureRecognizer) {
+
+        
+        
+        if sendingViewControllerName == "settingsViewControllerID" {
+            
+            let translation = gesture.translation(in: gesture.view)
+            let percent = translation.x / gesture.view!.frame.size.width
+            
+            if gesture.state == .began {
+                
+                let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: sendingViewControllerName) as! SettingsViewController
+                nextViewController.gameSession = gameSession
+                
+                percentInteractionController = UIPercentDrivenInteractiveTransition()
+                nextViewController.percentInteractionController = percentInteractionController
+                
+                nextViewController.transitioningDelegate = self;
+                self.present(nextViewController, animated: true, completion: nil)
+            } else if gesture.state == .changed {
+                  percentInteractionController!.update(percent)
+            } else if gesture.state == .ended || gesture.state == .cancelled {
+                let velocity = gesture.velocity(in: gesture.view)
+                
+                percentInteractionController?.completionSpeed = 0.99
+                if (percent > 0.5 && velocity.x == 0) || (velocity.x > 0) {
+                    percentInteractionController?.finish()
+                } else {
+
+                    percentInteractionController?.cancel()
+                }
+                percentInteractionController = nil
+            }
+            
+            
+
+        } else {
+            let translation = gesture.translation(in: gesture.view)
+            let percent = translation.x / gesture.view!.frame.size.width
+            
+            if gesture.state == .began {
+                
+                let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: sendingViewControllerName) as! GameStartPageViewController
+                nextViewController.gameSession = gameSession
+                
+                percentInteractionController = UIPercentDrivenInteractiveTransition()
+                nextViewController.percentInteractionController = percentInteractionController
+                
+                nextViewController.transitioningDelegate = self;
+                self.present(nextViewController, animated: true, completion: nil)
+            } else if gesture.state == .changed {
+                percentInteractionController!.update(percent)
+            } else if gesture.state == .ended || gesture.state == .cancelled {
+                let velocity = gesture.velocity(in: gesture.view)
+                
+                percentInteractionController?.completionSpeed = 0.99
+                if (percent > 0.5 && velocity.x == 0) || (velocity.x > 0) {
+                    percentInteractionController?.finish()
+                } else {
+                    
+                    percentInteractionController?.cancel()
+                }
+                percentInteractionController = nil
+            }
+        }
+    }
     
     //navigate to prior page
     @objc func goBack() {
@@ -214,6 +287,18 @@ class BadgesViewController: UIViewController, UIViewControllerTransitioningDeleg
         return nil
     }
     
+    func interactionControllerForPresentation(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return percentInteractionController
+    }
+    
+    func interactionControllerForDismissal(using animator: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        return nil
+    }
+    
+//    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+//        return true
+//    }
+    
     private func createDropShadow(badge: UIImageView) {
         badge.layer.shadowColor = UIColor.black.cgColor
         badge.layer.shadowOpacity = 1
@@ -222,3 +307,6 @@ class BadgesViewController: UIViewController, UIViewControllerTransitioningDeleg
     }
 
 }
+
+
+

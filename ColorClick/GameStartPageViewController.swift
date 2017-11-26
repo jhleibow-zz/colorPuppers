@@ -38,6 +38,8 @@ class GameStartPageViewController: UIViewController, UIViewControllerTransitioni
         return true;
     }
     
+    var percentInteractionController: UIPercentDrivenInteractiveTransition?
+    
     
     //MARK: - Actions
     

@@ -416,13 +416,21 @@ class GameSession: NSObject, GADRewardBasedVideoAdDelegate, UIViewControllerAnim
         } else {
             containerView.addSubview(toView)
             containerView.addSubview(fromView)
-            UIView.animate(withDuration: GamePlayParameters.TransitionTiming.gameTransitionTime, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0,
-                           animations: {
-                            fromView.frame.origin.x = fromView.frame.size.width * 1.01
-            },
-                           completion: { _ in
-                            transitionContext.completeTransition(true)
-            })
+//            UIView.animate(withDuration: GamePlayParameters.TransitionTiming.gameTransitionTime, delay: 0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0,
+//                           animations: {
+//                            fromView.frame.origin.x = fromView.frame.size.width * 1.01
+//            },
+//                           completion: { _ in
+//                            transitionContext.completeTransition(true)
+//            })
+            UIView.animate(withDuration: transitionDuration(using: transitionContext),
+               animations: {
+                fromView.frame.origin.x = fromView.frame.size.width * 1.01
+               },
+               completion: { finished in
+                transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
+                }
+            )
         }
 
     }
