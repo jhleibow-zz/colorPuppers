@@ -35,6 +35,7 @@ class SettingsViewController: UIViewController, UIViewControllerTransitioningDel
     //Object that is passed around all view controllers that contains current game state
     var gameSession: GameSession!
     
+    
     var percentInteractionController: UIPercentDrivenInteractiveTransition?
     
     //hides battery and other info...
@@ -137,16 +138,18 @@ class SettingsViewController: UIViewController, UIViewControllerTransitioningDel
         } else if gesture.state == .changed {
             percentInteractionController!.update(percent)
         } else if gesture.state == .ended || gesture.state == .cancelled {
+            
             let velocity = gesture.velocity(in: gesture.view)
             
             percentInteractionController?.completionSpeed = 0.99
             if (percent > 0.5 && velocity.x == 0) || (velocity.x > 0) {
                 percentInteractionController?.finish()
             } else {
-                
+
                 percentInteractionController?.cancel()
             }
             percentInteractionController = nil
+            
         }
     }
     
@@ -254,21 +257,29 @@ class SettingsViewController: UIViewController, UIViewControllerTransitioningDel
     //MARK: - Private Methods
     
     private func animateBadge(radians: CGFloat, counter: Int, delay: CGFloat) {
+
         var count = counter
         
-        UIView.animate(withDuration: 0.1, delay: TimeInterval(delay), usingSpringWithDamping: 0.2, initialSpringVelocity: 5.5, options: [.allowUserInteraction], animations: {
-            self.badgeButton.transform = CGAffineTransform(rotationAngle: radians)
-        }, completion: { finished in
-            count = count + 1
-            if !finished {
-                self.badgeButton.layer.removeAllAnimations()
-            } else if count == 6 {
-                count = 0
-                self.animateBadge(radians: -radians, counter: count, delay: 1.0)
-            } else {
-                self.animateBadge(radians: -radians, counter: count, delay: 0.0)
-            }
-        } )
+        if self.badgeButton.layer.animationKeys()?.count == nil {
+
+            UIView.animate(withDuration: 0.1, delay: TimeInterval(delay), usingSpringWithDamping: 0.2, initialSpringVelocity: 5.5, options: [.allowUserInteraction], animations: {
+                self.badgeButton.transform = CGAffineTransform(rotationAngle: radians)
+            }, completion: { finished in
+                print(count)
+                count = count + 1
+                if !finished {
+                    self.badgeButton.layer.removeAllAnimations()
+                } else if count == 6 {
+                    count = 0
+                    self.animateBadge(radians: -radians, counter: count, delay: 1.0)
+                } else {
+                    self.animateBadge(radians: -radians, counter: count, delay: 0.0)
+                }
+            } )
+            
+        }
+        
+
     }
     
     private func createDropShadow() {
@@ -280,7 +291,7 @@ class SettingsViewController: UIViewController, UIViewControllerTransitioningDel
     }
     
     private func stopAnimations() {
-        //self.badgeButton.layer.removeAllAnimations()
+
         view.layer.removeAllAnimations()
     }
     
