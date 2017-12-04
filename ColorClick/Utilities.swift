@@ -38,6 +38,8 @@ class Utilities {
         
         let buttonHeight = button.frame.height/CGFloat(scaleDownFromHeightFactor)
         let buttonWidth = button.frame.width
+//        print("buttonWidth: \(buttonWidth)")
+//        print("mainScreenWidth: \(UIScreen.main.bounds.width)")
         var fontSize = button.frame.width/CGFloat(GamePlayParameters.Fonts.squareSideSizeRatioToFontSize)
         var currentSizeBox: CGRect
         var widestWord:CGFloat

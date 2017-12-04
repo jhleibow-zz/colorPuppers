@@ -64,8 +64,7 @@ class AboutPuppersViewController: UIViewController, UIViewControllerTransitionin
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        fixFontSizes()
-        loadImages()
+
         
 //        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(goBack));
 //        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
@@ -77,6 +76,8 @@ class AboutPuppersViewController: UIViewController, UIViewControllerTransitionin
 //        view.addGestureRecognizer(swipeRight);
         // Do any additional setup after loading the view.
         
+        loadImages()
+        
         let panRight = UIPanGestureRecognizer(target: self, action: #selector(panGesture(_ :)))
         panRight.delegate = self
         view.addGestureRecognizer(panRight)
@@ -86,6 +87,17 @@ class AboutPuppersViewController: UIViewController, UIViewControllerTransitionin
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func viewWillLayoutSubviews() {
+
+        
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.layoutIfNeeded()
+        fixFontSizes()
     }
     
 

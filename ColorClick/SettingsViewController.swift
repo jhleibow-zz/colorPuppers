@@ -77,20 +77,25 @@ class SettingsViewController: UIViewController, UIViewControllerTransitioningDel
         
         gameSession.animationDelegate = self
         
-        createDropShadow()
-        resizeText()
         updateSoundOnText()
         updateMusicOnText()
-        updateHighScoreLabel()
         
         let panRight = UIPanGestureRecognizer(target: self, action: #selector(panGesture(_ :)))
         panRight.delegate = self
         view.addGestureRecognizer(panRight)
     }
 
-
-    override func viewDidAppear(_ animated: Bool) {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.layoutIfNeeded()
+        createDropShadow()
+        resizeText()
+        updateHighScoreLabel()
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         stopAnimations()
         animateBadge(radians: CGFloat.pi/48, counter: 0, delay: 0.0)

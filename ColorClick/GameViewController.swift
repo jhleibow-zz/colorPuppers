@@ -71,11 +71,16 @@ class GameViewController: UIViewController, UIViewControllerTransitioningDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.layoutIfNeeded()
         //sets board up for new minigame
         resetMinigame()
     }
-    
-    
 
     
     

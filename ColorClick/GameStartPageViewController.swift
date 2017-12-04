@@ -80,19 +80,28 @@ class GameStartPageViewController: UIViewController, UIViewControllerTransitioni
 
         gameSession.animationDelegate = self
         
-        createDropShadow()
+
         stopAnimations()
-        colorMenuButtons()
-        resizeText()
-        updateHighScoreLabel()
-        
+      
         
         
     }
+
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.layoutIfNeeded()
+        createDropShadow()
+        resizeText()
+        updateHighScoreLabel()
+    }
+   
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
+    
+
+        
         stopAnimations()
         animateBadge(radians: CGFloat.pi/48, counter: 0, delay: 0.0)
     }

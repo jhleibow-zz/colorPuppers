@@ -107,15 +107,25 @@ class GameOverViewController: UIViewController, GameSessionAdDelegate, UIViewCon
         gameOverNoAdFrame.alpha = 0.0
         continueFrame.alpha = 0.0
         
+
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.layoutIfNeeded()
         roundCorners()
         createDropShadow()
         wrongAnswer()
         fixFontSizes()
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+
+        
+        
         if !adClicked {
             if gameSession.rewardVideo?.isReady == true && gameSession.numberOfAdsWatchedThisGame < 3 {
                 fadeInGameOverWindow()

@@ -55,15 +55,8 @@ class BadgesViewController: UIViewController, UIViewControllerTransitioningDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        loadBadges()
-        Utilities.updateLabelFontAttributed(label: badgesLabel, fontName: GamePlayParameters.Fonts.gameFontName, alignment: .center, characterSpacing: 5.0, scaleDownFromHeightFactor: 2.7)
         
-        Utilities.updateLabelFontAttributed(label: badgeEasyLabel, fontName: GamePlayParameters.Fonts.gameFontName, alignment: .center, characterSpacing: 3.0, scaleDownFromHeightFactor: 4.1)
 
-        Utilities.updateLabelFontAttributed(label: badgeMediumLabel, fontName: GamePlayParameters.Fonts.gameFontName, alignment: .center, characterSpacing: 3.0, scaleDownFromHeightFactor: 4.1)
-        
-        Utilities.updateLabelFontAttributed(label: badgeHardLabel, fontName: GamePlayParameters.Fonts.gameFontName, alignment: .center, characterSpacing: 3.0, scaleDownFromHeightFactor: 4.1)
         // Do any additional setup after loading the view.
         
 //        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(goBack));
@@ -83,6 +76,21 @@ class BadgesViewController: UIViewController, UIViewControllerTransitioningDeleg
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.layoutIfNeeded()
+        loadBadges()
+        
+        Utilities.updateLabelFontAttributed(label: badgesLabel, fontName: GamePlayParameters.Fonts.gameFontName, alignment: .center, characterSpacing: 5.0, scaleDownFromHeightFactor: 2.7)
+        
+        Utilities.updateLabelFontAttributed(label: badgeEasyLabel, fontName: GamePlayParameters.Fonts.gameFontName, alignment: .center, characterSpacing: 3.0, scaleDownFromHeightFactor: 4.1)
+        
+        Utilities.updateLabelFontAttributed(label: badgeMediumLabel, fontName: GamePlayParameters.Fonts.gameFontName, alignment: .center, characterSpacing: 3.0, scaleDownFromHeightFactor: 4.1)
+        
+        Utilities.updateLabelFontAttributed(label: badgeHardLabel, fontName: GamePlayParameters.Fonts.gameFontName, alignment: .center, characterSpacing: 3.0, scaleDownFromHeightFactor: 4.1)
+        
     }
     
     //deal with pan gesture
