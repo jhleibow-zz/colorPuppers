@@ -103,19 +103,22 @@ class GameStartPageViewController: UIViewController, UIViewControllerTransitioni
     private func animateBadge(radians: CGFloat, counter: Int, delay: CGFloat) {
         var count = counter
         
-        UIView.animate(withDuration: 0.1, delay: TimeInterval(delay), usingSpringWithDamping: 0.2, initialSpringVelocity: 5.5, options: [.allowUserInteraction], animations: {
-                self.badgeButton.transform = CGAffineTransform(rotationAngle: radians)
-        }, completion: { finished in
-            count = count + 1
-            if !finished {
-                self.badgeButton.layer.removeAllAnimations()
-            } else if count == 6 {
-                count = 0
-                self.animateBadge(radians: -radians, counter: count, delay: 1.0)
-            } else {
-                self.animateBadge(radians: -radians, counter: count, delay: 0.0)
-            }
-        } )
+        if self.badgeButton.layer.animationKeys()?.count == nil {
+        
+            UIView.animate(withDuration: 0.1, delay: TimeInterval(delay), usingSpringWithDamping: 0.2, initialSpringVelocity: 5.5, options: [.allowUserInteraction], animations: {
+                    self.badgeButton.transform = CGAffineTransform(rotationAngle: radians)
+            }, completion: { finished in
+                count = count + 1
+                if !finished {
+                    self.badgeButton.layer.removeAllAnimations()
+                } else if count == 6 {
+                    count = 0
+                    self.animateBadge(radians: -radians, counter: count, delay: 1.0)
+                } else {
+                    self.animateBadge(radians: -radians, counter: count, delay: 0.0)
+                }
+            } )
+        }
     }
     
     private func stopAnimations() {
