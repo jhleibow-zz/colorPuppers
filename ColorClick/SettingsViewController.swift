@@ -338,4 +338,12 @@ class SettingsViewController: UIViewController, UIViewControllerTransitioningDel
     
 }
 
+extension SettingsViewController {
+    
+    // make sure it only recognizes upward gestures
+    
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+}
 

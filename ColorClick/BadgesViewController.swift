@@ -47,6 +47,11 @@ class BadgesViewController: UIViewController, UIViewControllerTransitioningDeleg
     
     var sendingViewControllerName: String!
     
+    var preloadSettingsViewController: SettingsViewController?
+    var preloadGameStartPageViewController: GameStartPageViewController?
+    
+    private var initialTouchLocation: CGPoint = CGPoint.zero
+    private var priorTouchLocation: CGPoint = CGPoint.zero
     
     //hides battery and other info...
     override var prefersStatusBarHidden: Bool {
@@ -67,9 +72,15 @@ class BadgesViewController: UIViewController, UIViewControllerTransitioningDeleg
 //        swipeLeft.direction = UISwipeGestureRecognizerDirection.right
 //        view.addGestureRecognizer(swipeRight);
         
-        let panRight = InstantPanGestureRecoginzer(target: self, action: #selector(panGesture(_ :)))
-        panRight.delegate = self
-        view.addGestureRecognizer(panRight)
+//        let panRight = InstantPanGestureRecoginzer(target: self, action: #selector(panGesture(_ :)))
+//        panRight.delegate = self
+//        view.addGestureRecognizer(panRight)
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(panGesture(_ :)))
+        longPress.delegate = self
+        longPress.allowableMovement = CGFloat.infinity
+        longPress.minimumPressDuration = 0.0
+        view.addGestureRecognizer(longPress)
         
     }
 
@@ -91,36 +102,86 @@ class BadgesViewController: UIViewController, UIViewControllerTransitioningDeleg
         
         Utilities.updateLabelFontAttributed(label: badgeHardLabel, fontName: GamePlayParameters.Fonts.gameFontName, alignment: .center, characterSpacing: 3.0, scaleDownFromHeightFactor: 4.1)
         
+        if sendingViewControllerName == "settingsViewControllerID" {
+            DispatchQueue.global(qos: .userInitiated).async {
+                let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                self.preloadSettingsViewController = myStoryBoard.instantiateViewController(withIdentifier: self.sendingViewControllerName) as? SettingsViewController
+                self.preloadSettingsViewController!.gameSession = self.gameSession
+                
+                self.percentInteractionController = UIPercentDrivenInteractiveTransition()
+                self.preloadSettingsViewController!.percentInteractionController = self.percentInteractionController
+                
+                self.preloadSettingsViewController!.transitioningDelegate = self;
+                
+                
+                let nextView = self.preloadSettingsViewController!.view
+                NSLog(nextView.debugDescription)
+            }
+        
+        } else {
+            DispatchQueue.global(qos: .userInitiated).async {
+                let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                self.preloadGameStartPageViewController = myStoryBoard.instantiateViewController(withIdentifier: self.sendingViewControllerName) as? GameStartPageViewController
+                self.preloadGameStartPageViewController!.gameSession = self.gameSession
+                
+                self.percentInteractionController = UIPercentDrivenInteractiveTransition()
+                self.preloadGameStartPageViewController!.percentInteractionController = self.percentInteractionController
+                
+                self.preloadGameStartPageViewController!.transitioningDelegate = self;
+                
+                
+                let nextView = self.preloadGameStartPageViewController!.view
+                NSLog(nextView.debugDescription)
+            }
+            
+            
+        }
+        
+        
     }
     
     //deal with pan gesture
-    @objc func panGesture(_ gesture: UIPanGestureRecognizer) {
+    @objc func panGesture(_ gesture: UILongPressGestureRecognizer) {
 
         
         
         if sendingViewControllerName == "settingsViewControllerID" {
             
-            let translation = gesture.translation(in: gesture.view)
-            let percent = translation.x / gesture.view!.frame.size.width
+//            let translation = gesture.translation(in: gesture.view)
+            let location = gesture.location(in: gesture.view)
+            let percent: CGFloat
+            
+            if initialTouchLocation.x == 0 && initialTouchLocation.y == 0 {
+                percent = 0
+            } else {
+                percent = (initialTouchLocation.x - location.x) / gesture.view!.frame.size.width
+            }
+            
+            
             
             if gesture.state == .began {
-                
-                let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: sendingViewControllerName) as! SettingsViewController
-                nextViewController.gameSession = gameSession
-                
-                percentInteractionController = UIPercentDrivenInteractiveTransition()
-                nextViewController.percentInteractionController = percentInteractionController
-                
-                nextViewController.transitioningDelegate = self;
-                self.present(nextViewController, animated: true, completion: nil)
+                priorTouchLocation = location
+                initialTouchLocation = location
+                NSLog("initialTouchLocation: \(initialTouchLocation.x)")
+//                let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//                let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: sendingViewControllerName) as! SettingsViewController
+//                nextViewController.gameSession = gameSession
+//
+//                percentInteractionController = UIPercentDrivenInteractiveTransition()
+//                nextViewController.percentInteractionController = percentInteractionController
+//
+//                nextViewController.transitioningDelegate = self;
+                self.present(preloadGameStartPageViewController!, animated: true, completion: nil)
             } else if gesture.state == .changed {
-                  percentInteractionController!.update(percent)
+                percentInteractionController!.update(percent)
+                priorTouchLocation = location
             } else if gesture.state == .ended || gesture.state == .cancelled {
-                let velocity = gesture.velocity(in: gesture.view)
+                let velocity = location.x - priorTouchLocation.x
+                
+                initialTouchLocation = CGPoint.zero
                 
                 percentInteractionController?.completionSpeed = 0.99
-                if (percent > 0.5 && velocity.x == 0) || (velocity.x > 0) {
+                if (percent > 0.5 && velocity == 0) || (velocity > 0) {
                     percentInteractionController?.finish()
                 } else {
 
@@ -132,27 +193,44 @@ class BadgesViewController: UIViewController, UIViewControllerTransitioningDeleg
             
 
         } else {
-            let translation = gesture.translation(in: gesture.view)
-            let percent = translation.x / gesture.view!.frame.size.width
+            let location = gesture.location(in: gesture.view)
+            let percent: CGFloat
+            
+            if initialTouchLocation.x == 0 && initialTouchLocation.y == 0 {
+                percent = 0
+            } else {
+                percent = (location.x + gesture.view!.frame.size.width - initialTouchLocation.x) / gesture.view!.frame.size.width
+            }
             
             if gesture.state == .began {
-                
+                NSLog("in .began")
+                priorTouchLocation = location
+                initialTouchLocation = location
+                NSLog("initialTouchLocation: \(initialTouchLocation.x)")
                 let myStoryBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
                 let nextViewController = myStoryBoard.instantiateViewController(withIdentifier: sendingViewControllerName) as! GameStartPageViewController
                 nextViewController.gameSession = gameSession
-                
+
                 percentInteractionController = UIPercentDrivenInteractiveTransition()
                 nextViewController.percentInteractionController = percentInteractionController
-                
+
                 nextViewController.transitioningDelegate = self;
+                
                 self.present(nextViewController, animated: true, completion: nil)
+//                DispatchQueue.global(qos: .userInteractive).async {
+//                    self.present(nextViewController, animated: true, completion: nil)
+//                }
+                
+                
             } else if gesture.state == .changed {
+                NSLog("in .changed with location: \(location.x + gesture.view!.frame.size.width) and percent: \(percent)")
                 percentInteractionController!.update(percent)
+                priorTouchLocation = location
             } else if gesture.state == .ended || gesture.state == .cancelled {
-                let velocity = gesture.velocity(in: gesture.view)
+                let velocity = location.x - priorTouchLocation.x
                 
                 percentInteractionController?.completionSpeed = 0.99
-                if (percent > 0.5 && velocity.x == 0) || (velocity.x > 0) {
+                if (percent > 0.5 && velocity == 0) || (velocity > 0) {
                     percentInteractionController?.finish()
                 } else {
                     
