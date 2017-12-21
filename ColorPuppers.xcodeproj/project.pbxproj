@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		14046B741F39106900D32FA8 /* BadgesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14046B731F39106900D32FA8 /* BadgesViewController.swift */; };
+		14172D3E1FEC3ED500DACFE6 /* GamePlayParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14172D3D1FEC3ED500DACFE6 /* GamePlayParameters.swift */; };
 		141CA1411F037C7900E7DA52 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CA1401F037C7900E7DA52 /* Utilities.swift */; };
 		141CA1431F07839600E7DA52 /* Bark.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 141CA1421F07839500E7DA52 /* Bark.m4a */; };
 		141CA1471F078BA900E7DA52 /* funky.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 141CA1461F078BA900E7DA52 /* funky.mp3 */; };
@@ -36,7 +37,6 @@
 		14D16F0E1EEA119F00AC63F1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D16F0D1EEA119F00AC63F1 /* SettingsViewController.swift */; };
 		14D16F101EEF5A8400AC63F1 /* MiniGameStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D16F0F1EEF5A8400AC63F1 /* MiniGameStage.swift */; };
 		14D16F121EF0B6C700AC63F1 /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D16F111EF0B6C700AC63F1 /* GameObject.swift */; };
-		14D16F141EF1EA1500AC63F1 /* GamePlayParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14D16F131EF1EA1500AC63F1 /* GamePlayParameters.swift */; };
 		651177C3B2CAAC66A3D46507 /* Pods_ColorPuppers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6AE98A8406B7D8E4EC05EBE /* Pods_ColorPuppers.framework */; };
 		CDD63F435BE7FA863B772DA1 /* Pods_ColorPuppersTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B840A98054DC2F52647D143A /* Pods_ColorPuppersTests.framework */; };
 /* End PBXBuildFile section */
@@ -53,6 +53,7 @@
 
 /* Begin PBXFileReference section */
 		14046B731F39106900D32FA8 /* BadgesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BadgesViewController.swift; sourceTree = "<group>"; };
+		14172D3D1FEC3ED500DACFE6 /* GamePlayParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayParameters.swift; sourceTree = "<group>"; };
 		141CA1401F037C7900E7DA52 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		141CA1421F07839500E7DA52 /* Bark.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; name = Bark.m4a; path = ColorClick/Bark.m4a; sourceTree = "<group>"; };
 		141CA1461F078BA900E7DA52 /* funky.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = funky.mp3; path = ColorClick/funky.mp3; sourceTree = "<group>"; };
@@ -85,7 +86,6 @@
 		14D16F0D1EEA119F00AC63F1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		14D16F0F1EEF5A8400AC63F1 /* MiniGameStage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniGameStage.swift; sourceTree = "<group>"; };
 		14D16F111EF0B6C700AC63F1 /* GameObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
-		14D16F131EF1EA1500AC63F1 /* GamePlayParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePlayParameters.swift; sourceTree = "<group>"; };
 		22EE31E650FEFC38C3D8EDBA /* Pods-ColorPuppersTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorPuppersTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ColorPuppersTests/Pods-ColorPuppersTests.release.xcconfig"; sourceTree = "<group>"; };
 		38B15DAF7F5566663CDE9DB6 /* Pods-ColorPuppers.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ColorPuppers.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ColorPuppers/Pods-ColorPuppers.debug.xcconfig"; sourceTree = "<group>"; };
 		A6AE98A8406B7D8E4EC05EBE /* Pods_ColorPuppers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ColorPuppers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,7 +151,7 @@
 		14CD7AEF1EDCED03001AB42C /* ColorPuppers */ = {
 			isa = PBXGroup;
 			children = (
-				14D16F131EF1EA1500AC63F1 /* GamePlayParameters.swift */,
+				14172D3D1FEC3ED500DACFE6 /* GamePlayParameters.swift */,
 				14D16F091EE9456A00AC63F1 /* GameSession.swift */,
 				14CD7B101EDE1170001AB42C /* MiniGame.swift */,
 				14D16F0F1EEF5A8400AC63F1 /* MiniGameStage.swift */,
@@ -432,7 +432,6 @@
 				14D16F101EEF5A8400AC63F1 /* MiniGameStage.swift in Sources */,
 				148A5F731EE558C4001C20A5 /* GameOverViewController.swift in Sources */,
 				14D16F0A1EE9456A00AC63F1 /* GameSession.swift in Sources */,
-				14D16F141EF1EA1500AC63F1 /* GamePlayParameters.swift in Sources */,
 				14D16F121EF0B6C700AC63F1 /* GameObject.swift in Sources */,
 				141CA1411F037C7900E7DA52 /* Utilities.swift in Sources */,
 				14CD7B151EDE3F4D001AB42C /* SquareButton.swift in Sources */,
@@ -448,6 +447,7 @@
 				14BD5C601FCA3504002789F6 /* InstantPanGestureRecoginzer.swift in Sources */,
 				14D16F0E1EEA119F00AC63F1 /* SettingsViewController.swift in Sources */,
 				141CA14B1F1573EB00E7DA52 /* AboutPuppersViewController.swift in Sources */,
+				14172D3E1FEC3ED500DACFE6 /* GamePlayParameters.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
